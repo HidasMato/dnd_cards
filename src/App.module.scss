@@ -1,0 +1,10 @@
+.MainComponent {
+    display: flex;
+    background-color: rgb(229, 197, 157);
+    min-height: 100vh;
+    .Menu {
+        width: 300px;
+        border-right: 3px solid var(--color2);
+        padding: 20px;
+    }
+}

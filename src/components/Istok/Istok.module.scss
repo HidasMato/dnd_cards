@@ -1,0 +1,35 @@
+.MainSchool {
+    .Flex {
+        display: flex;
+        align-items: center;
+        .Radio {
+            width: 20px;
+            height: 20px;
+            background-color: var(--color1);
+            border: 3px solid var(--color2);
+            border-radius: 50%;
+            .Ok {
+                width: 14px;
+                height: 14px;
+                background-color: var(--color5);
+                border-radius: 50%;
+                margin-top: -1px;
+                margin-left: 1px;
+            }
+        }
+        :hover {
+            cursor: pointer;
+        }
+        .Tre {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 13px solid var(--color2);
+            border-radius: 10px;
+            padding-bottom: 4px;
+            margin-top: 7px;
+        }  
+    }
+    margin-top: 10px;
+}
