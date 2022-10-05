@@ -1,6 +1,110 @@
+.Obratka{
+    position:relative;
+    width: 33.3333%;
+    height: 100%;
+    .Oborot {
+        width: 100%;
+        height: 100%;
+    }
+    .Number {
+        color: var(--Oblogka1);
+        position: absolute;
+        font-size: 60px;
+    }
+    .Down {
+        left: 29px;
+        bottom: 25px;
+    }
+    .Up {
+        top: 23px;
+        right: 29px;
+    }
+}
 .MainCard {
-    width: 200px;
-    height: 200px;
-    background-color: #fff;
-    border: 4px solid black;
+    width: 33.3333%;
+    background-color: var(--BackcgroundCard);
+    padding: 10px 10px 30px;
+    color: var(--Text1Card);
+    .WhiteCard {
+        width: 100%;
+        height: 100%;
+        background-color: var(--InCard);
+        border-radius: 10px;
+        .Zagolovok {
+            text-align: center;
+            padding: 3px;
+            color: var(--Text4Card);
+        }
+        .School {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--Text2Card);
+            background-color: var(--BackcgroundCard);
+            width: 100%;
+            padding-top: 2px;
+            font-size: 9px;
+        }
+        .Options {
+            width: 100%;
+            height: 30px;
+            font-size: 9px;
+            display: flex;
+            div {
+                display: flex;
+                flex-direction: column;
+                padding: 3px 0;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid var(--BackcgroundCard);
+                width: 50%;
+                height: 100%;
+                color: var(--Text5Card);
+            }
+            p {
+                color: var(--Text3Card);
+            }
+        }
+        .Description {
+            padding: 2px;
+            border-top:10px solid var(--BackcgroundCard);
+            font-size: 8px;
+            .Text {
+                width: 100%;
+            }
+        }
+        .SmallDescription{
+            height: 200px;
+        }
+        .BigDescription {
+            height: 237px;
+        }
+        .HightLevels {
+            padding: 2px;
+            font-size: 8px;
+        }
+        .HightLevelsTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--Text2Card);
+            background-color: var(--BackcgroundCard);
+            width: 100%;
+            padding-top: 2px;
+            font-size: 9px;  
+        }
+    }
+    .Futter {
+        color: var(--Text2Card);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+    }
+}
+.BorderRigth {
+    border-right: 1px solid white;
+}
+.BorderDown {
+    border-bottom: 1px solid white;
 }

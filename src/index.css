@@ -63,10 +63,3 @@ button {
 	background-color: transparent;
 	cursor: pointer;
 }
-:root {
-    --color1: rgb(250 143 55 / 64%);
-    --color2: #e18a39;
-    --color3: rgb(231 128 71 / 49%);
-    --color4: rgb(153, 84, 20);
-    --color5: rgb(70, 48, 28);
-}

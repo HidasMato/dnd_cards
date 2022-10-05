@@ -4,6 +4,7 @@
   "homepage": "https://hidasmato.github.io/dnd_cards",
   "private": true,
   "dependencies": {
+    "@remobile/react-native-file": "^1.0.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

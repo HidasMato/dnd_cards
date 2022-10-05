@@ -1,10 +1,104 @@
 .MainComponent {
+    font-weight: 800;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-style: normal;
+    font-variant: small-caps;
+    color: var(--color4);
     display: flex;
     background-color: rgb(229, 197, 157);
+    overflow-y: scroll;
+    
     min-height: 100vh;
     .Menu {
+        .Flex {
+            display: flex;
+            .Oborot{
+                input {
+                    width: 40px;height: 40px;
+                    opacity: 1;
+                }
+            }
+        }
         width: 300px;
         border-right: 3px solid var(--color2);
+        margin-right: 30px;
         padding: 20px;
+        .Setting {
+            margin-top: 40px;
+            .ChoseColor {
+                display: flex;
+                align-items: center;
+                input {
+                    background-color: transparent;
+                }
+                .As {
+                    color: var(--color2);
+                    background-color: var(--color1);
+                    padding: 3px;
+                    border-radius: 6px;
+                }
+                .As:hover {
+                    color: var(--color2);
+                    background-color: var(--color4);
+                    cursor: pointer;
+                }
+                .Yes {
+                    color: var(--color2);
+                    background-color: var(--color4);
+                }
+            }
+        }
     }
+    .AllCards {
+        width: 210mm;
+    }
+    @media print {
+        
+        .CardsLine {
+            break-inside: avoid;
+        }
+    }
+    .CardsLine {
+        display: flex;
+        justify-content: space-between;
+        width: 783px;
+        height: 98.95mm;
+    }
+    .Obratka {
+        flex-direction: row-reverse;
+    }
+    @media print {
+        background-color: #fff;
+        .Menu {
+            display: none;
+        }
+        .AllCards {
+            margin: 0px;
+        }
+        .CardsLine {
+            width: 100%;
+            break-inside: avoid;
+        }
+    }
+    --color1: #eb9e5fd9;
+    --color2: #e18a39;
+    --color3: rgb(231 128 71 / 49%);
+    --color4: rgb(153, 84, 20);
+    --color5: rgb(70, 48, 28);
+    --BackcgroundCard: rgb(39 152 77);
+    --InCard: rgb(255, 255, 255);
+    --Text1Card: rgb(0, 0, 0);
+    --Text2Card: rgb(255, 255, 255);
+    --Text3Card: rgb(39 152 77);
+    --Text4Card: rgb(0, 0, 0);
+    --Text5Card: rgb(0, 0, 0);
+    --Oblogka1: rgb(39 152 77);
+    --Oblogka2: rgb(255, 255, 255);
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+@page {
+	margin: 0;
 }
