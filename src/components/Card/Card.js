@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import style from './Card.module.scss'
 import {ReactComponent as Druid} from '../../components/Druid/Druid.svg';
 
-function Card({ back, spellControl, card, borderRight, borderDown }) {
+function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon }) {
     if (!spellControl)
-        return null;
+        return <div className={style.Empty}></div>;
     if (back) {
         const num = Number(card?.level[0]) || 0;
         return (
@@ -16,23 +16,30 @@ function Card({ back, spellControl, card, borderRight, borderDown }) {
         );
     }
     const fuulPuti = spellControl.targetClass + '/' + spellControl.levelName + '/' + spellControl.istokName + '/' + spellControl.spellName;
-    let descriptionMain, descriptionText, size =8;
+    let descriptionMain, descriptionText, size =maxSize;
+    const higthLevels = card?.hightlevel != undefined && card?.hightlevel.length != 0;
     setTimeout(() => {
         descriptionMain = document.getElementById("Description/" + fuulPuti);
-        descriptionText = descriptionMain.children;
-        descriptionText[0].style.fontSize = size + 'px';
-        while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - 12) {
-            size = size - 0.1;
+        descriptionText = descriptionMain?.children;
+        if (descriptionText) {
             descriptionText[0].style.fontSize = size + 'px';
+            while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 -2 && size >= minSize) {
+                size = size - 0.01;
+                descriptionText[0].style.fontSize = size + 'px';
+            }
+            if (size <= minSize)
+                console.log(spellControl.spellName," возможно переполнение");
+            size = maxSize;
         }
-    }, 500);
-    const higthLevels = card?.hightlevel != undefined && card?.hightlevel.length != 0;
+    }, 100)
+    
     return (
-        <div className={style.MainCard + " " + (borderRight != 2 ? style.BorderRigth : "")+ " " + (borderDown ? style.BorderDown : "")}>
+        <div className={style.MainCard + " " + (borderRight != 2 ? style.BorderRigth : "") + " " + (borderDown ? style.BorderDown : "")} onLoad= {() => console.log(123)}>
             <div className={style.WhiteCard}>
                 <div className={style.Zagolovok}>
-                    {console.log('card', card)}
-                    {spellControl.spellName}
+                    <div>
+                        {spellControl.spellName}
+                    </div>
                 </div>
                 <div className={style.School}>
                     <div>
@@ -59,38 +66,36 @@ function Card({ back, spellControl, card, borderRight, borderDown }) {
                         </p> <span>{card?.longer}</span>
                     </div>
                 </div>
-                <div className={style.Description + ' ' + (higthLevels ? style.SmallDescription : style.BigDescription) } id={"Description/" + fuulPuti}>
-                    
+                <div className={style.Description} id={"Description/" + fuulPuti}>
                     <div className={style.Text}>
+                        <div>
+                            {
+                                card?.text.map((abzac, index) => {
+                                    return <p key={index}>{abzac}</p>;
+                                })
+                            }
+                        </div>
                         {
-                            card?.text.map((abzac, index) => {
-                                return <p key={index}>{abzac}</p>;
-                            })
+                            higthLevels
+                                ? 
+                                <div>
+                                    <div className={style.HightLevelsTitle}>
+                                        <div>На более высоком уровне</div>
+                                    </div>
+                                    <div className={style.HightLevels}>
+                                        {card?.hightlevel.map((abzac, index) => {
+                                            return <p key={index}>{abzac}</p>;
+                                        })}
+                                    </div>
+                                </div>
+                                : null
                         }
                     </div>
                 </div>
-                {
-                    higthLevels
-                        ? 
-                        <div className={style.HightLevelsTitle}>
-                            На более высоком уровне
-                        </div>
-                        : null
-                }
-                {
-                    higthLevels
-                        ? 
-                        <div className={style.HightLevels}>
-                            {card?.hightlevel.map((abzac, index) => {
-                                return <p key={index}>{abzac}</p>;
-                            })}
-                        </div>
-                        : null
-                }
             </div>
             <div className={style.Futter}>
                 <div>
-                {spellControl.targetClass}{spellControl.levelName == '' ? null : (' - ' + spellControl.levelName)}
+                    {spellControl.targetClass}{!istokPrint ? null : (' - ' + spellControl.istokName)}
                 </div>
             </div>
         </div>

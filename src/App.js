@@ -7,12 +7,17 @@ import Istok from './components/Istok/Istok';
 
 export default function App() {
     const [data, setData] = useState(undefined);
+    const [changeKegl, setChangeKegl] = useState(0);
+    const [minSize, setMinSize] = useState(6);
+    const [maxSize, setMaxSize] = useState(8);
+    const [keglFon, setKeglFon] = useState(9);
+    const [printIstok, setPrintIstok] = useState({});
     const [oborot, setOborot] = useState(false);
     const [targetClass, setTargetClass] = useState("");
     const [spellControl, setSpellControl] = useState({}); //Список всех заклинаний в стиле подписи: Класс - Уровень - Источник
     const classesName = [];
-    const [colorMas, setColorMas] = useState(["#27984d","#ffffff","#000000","#ffffff","#27984d","#000000","#000000","#27984d","#ffffff"])
-    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
+    const [colorMas, setColorMas] = useState(["#27984d", "#ffffff", "#000000", "#ffffff", "#27984d", "#000000", "#000000", "#27984d", "#ffffff", "#ffffff"]);
+    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1,1]);
     let colors;
     const getData = setInterval(() => {
         setData(document.getElementById('MainComponent')?.newOption);
@@ -43,18 +48,37 @@ export default function App() {
         const kolvo = Object.keys(spellControl).length - 1;
         let masCards = [];
         return Object.keys(spellControl).map((spellName, index) => {
-            if (index % 3 == 0)
+            if (index % 9 == 0)
                 masCards = [];
-            masCards[index % 3] = spellControl[spellName];
-            if (index % 3 == 2 || index == kolvo) {
+            masCards[index % 9] = spellControl[spellName];
+            if (index % 9 == 8 || index == kolvo) {
+                console.clear();
                 return (
-                    <div key={index/3} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
-                        {
-                            masCards?.map((spell, indexC) => {
-                                if (oborot) return <Card back={true} borderDown={!(index % 9 == 8)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell.spellName]} key={spell.targetClass + '+' + spell.levelName + '+' + spell.istokName + '+' + spell.spellName} /> 
-                                else return <Card borderDown={!(index % 9 == 8)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell.spellName]} key={spell.targetClass + '+' + spell.levelName + '+' + spell.istokName + '+' + spell.spellName}></Card>
-                            })
-                        }
+                    <div className={style.PageCards} key={"group" + index}>
+                        <div key={index - 8} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                            {
+                                [masCards[0], masCards[1], masCards[2]].map((spell, indexC) => {
+                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 2)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName} /> 
+                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 2)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                })
+                            }
+                        </div>
+                        <div key={index - 5} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                            {
+                                [masCards[3],masCards[4],masCards[5]].map((spell, indexC) => {
+                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 5)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName} /> 
+                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 5)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                })
+                            }
+                        </div>
+                        <div key={index - 2} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                            {
+                                [masCards[6], masCards[7], masCards[8]].map((spell, indexC) => {
+                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 8)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName} /> 
+                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 8)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                })
+                            }
+                        </div>
                     </div>
                 );
             }
@@ -70,7 +94,8 @@ export default function App() {
         document.getElementById('MainComponent')?.style.setProperty('--Text1Card', colorMas[6]);
         document.getElementById('MainComponent')?.style.setProperty('--Oblogka1', colorMas[7]);
         document.getElementById('MainComponent')?.style.setProperty('--Oblogka2', colorMas[8]);
-    }
+        document.getElementById('MainComponent')?.style.setProperty('--Backcground', colorMas[9]);
+    };
     return (
         <div className={style.MainComponent} id={'MainComponent'}>
             <div className={style.Menu}>
@@ -92,7 +117,10 @@ export default function App() {
                                 allSpells.push({"level":level, "name":spell});
                                 onlyUseLevels.add(level);
                             })
-                            return <Istok key={istok} targetClass={targetClass} istok={istok} allSpells={allSpells} onlyUseLevels={[...onlyUseLevels]} spellControl={spellControl} updateSpellControll={updateSpellControll}></Istok>
+                            if (printIstok[istok] == undefined) {
+                                {setPrintIstok({...printIstok,[istok]:true})}
+                            }
+                            return <Istok key={istok} setPrintIstok={setPrintIstok} printIstok={printIstok} targetClass={targetClass} istok={istok} allSpells={allSpells} onlyUseLevels={[...onlyUseLevels]} spellControl={spellControl} updateSpellControll={updateSpellControll}></Istok>
                         })
                         : null
                 }
@@ -105,6 +133,10 @@ export default function App() {
                             if (like[4] == 0) {
                                 R[4] = R[0];
                                 colors[4].value = R[0];
+                            }
+                            if (like[9] == 0) {
+                                R[9] = R[0];
+                                colors[9].value = R[0];
                             }
                             if (like[6] == 0) {
                                 R[6] = R[0];
@@ -375,6 +407,108 @@ export default function App() {
                         }}>
                             Как Внутри
                         </div>
+                    </div>
+                    <div className={style.ChoseColor}>
+                        Фон при печати
+                        <input name={'colorInput'} type="color" defaultValue={colorMas[9]} onInput={(e) => {  
+                            const R = colorMas;
+                            R[9] = e.target.value;
+                            setColorMas(R);
+                            changeColor();
+                        }} />
+                        <div className={style.As} onClick={(e) => {
+                            if (like[9] == 1) {
+                                e.target.className = style.As + ' ' + style.Yes;
+                                const R = colorMas;
+                                R[9] = colorMas[0];
+                                e.target.previousSibling.value = colorMas[0];
+                                e.target.previousSibling.disabled = true;
+                                setColorMas(R);
+                                changeColor();
+                                const L = like;
+                                L[9] = 0;
+                                setLike(L);
+                            } else {
+                                e.target.className = style.As;
+                                e.target.previousSibling.disabled = false;
+                                const L = like;
+                                L[9] = 1;
+                                setLike(L);
+                            }
+                        }}>
+                            Как Обложка
+                        </div>
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Поля в милиметрах
+                        <input name={'kegl'} type="number" defaultValue={0} min={0} max={10} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--padding', e.target.value + 'mm');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль заголовка
+                        <input name={'kegl'} type="number" defaultValue={16} min={0} max={24} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglTitl', e.target.value+'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль на фоне верх
+                        <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglFon', e.target.value + 'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Средняя перемычка
+                        <input name={'kegl'} type="number" defaultValue={9} min={1} max={15} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglPerem', e.target.value + 'px');
+                            setKeglFon(e.target.value);
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль высокий уровень
+                        <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglVys', e.target.value + 'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль особое заголовок
+                        <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglOsobTitl', e.target.value+'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль особое текст
+                        <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglOsobText', e.target.value+'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Кегль нижней подписи
+                        <input name={'kegl'} type="number" defaultValue={16} min={0} max={28} onChange={(e) => {
+                            document.getElementById('MainComponent')?.style.setProperty('--keglTitleNis', e.target.value+'px');
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Минимальный кегль текста
+                        <input name={'kegl'} type="number" defaultValue={6} min={2} max={16} onChange={(e) => {
+                            setMinSize(e.target.value);
+                            setChangeKegl(changeKegl + 1);
+                        }} />
+                    </div>
+                    <div className={style.ChoseKegl}>
+                        Максимальный кегль текста
+                        <input name={'kegl'} type="number" defaultValue={8} min={4} max={24} onChange={(e) => {
+                            setMaxSize(e.target.value);
+                            setChangeKegl(changeKegl + 1);
+                        }} />
                     </div>
                 </div>
             </div>

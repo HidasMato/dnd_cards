@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Level from '../Level/Level';
 import style from './Istok.module.scss'
 
-export default function Istok({ istok, allSpells, onlyUseLevels, spellControl, updateSpellControll, targetClass}) {
+export default function Istok({ printIstok, setPrintIstok, istok, allSpells, onlyUseLevels, spellControl, updateSpellControll, targetClass }) {
     const [showLevels, setShowLevels] = useState(false);
     const [showOk, setShowOk] = useState(false);
     const targetClasses = [], levelNames = [], istokNames = [], spellNames = [];
@@ -32,7 +32,12 @@ export default function Istok({ istok, allSpells, onlyUseLevels, spellControl, u
                     {showOk && <div className={style.Ok} />}
                 </div>
                 {istok}
-                <div className={style.Tre} onClick={() => {setShowLevels(!showLevels)}} />
+                <div className={style.Tre} onClick={() => { setShowLevels(!showLevels) }} />
+                <div className={style.Print}>
+                    <input type="checkbox" id={istok} checked={printIstok[istok]} onChange={(e) => {
+                        setPrintIstok({ ...printIstok, [istok]: e.target.checked });
+                        }}/>
+                </div>
             </div>
             {showLevels &&
                 

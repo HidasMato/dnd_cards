@@ -1,3 +1,8 @@
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
 .MainComponent {
     font-weight: 800;
     font-family: "Comic Sans MS", cursive, sans-serif;
@@ -7,9 +12,9 @@
     display: flex;
     background-color: rgb(229, 197, 157);
     overflow-y: scroll;
-    
     min-height: 100vh;
     .Menu {
+        
         .Flex {
             display: flex;
             .Oborot{
@@ -19,12 +24,25 @@
                 }
             }
         }
-        width: 300px;
+        min-width: 350px;
+        max-width: 350px;
         border-right: 3px solid var(--color2);
         margin-right: 30px;
         padding: 20px;
         .Setting {
             margin-top: 40px;
+            .ChoseKegl {
+                padding-top: 5px;
+                display: flex;
+                align-items: center;
+                input {
+                    padding-left: 3px;
+                    margin-left: 6px;
+                    width: 90px;
+                    color: var(--color4);
+                    background-color: var(--color1);
+                }
+            }
             .ChoseColor {
                 display: flex;
                 align-items: center;
@@ -50,7 +68,17 @@
         }
     }
     .AllCards {
-        width: 210mm;
+        .PageCards {
+            height: var(--h);
+            width: var(--w);
+            padding: var(--padding);
+            .CardsLine {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                height: 33.33333%;
+            }
+        }
     }
     @media print {
         
@@ -58,17 +86,11 @@
             break-inside: avoid;
         }
     }
-    .CardsLine {
-        display: flex;
-        justify-content: space-between;
-        width: 783px;
-        height: 98.95mm;
-    }
     .Obratka {
         flex-direction: row-reverse;
     }
     @media print {
-        background-color: #fff;
+        background-color: var(--Backcground);
         .Menu {
             display: none;
         }
@@ -76,7 +98,6 @@
             margin: 0px;
         }
         .CardsLine {
-            width: 100%;
             break-inside: avoid;
         }
     }
@@ -86,6 +107,7 @@
     --color4: rgb(153, 84, 20);
     --color5: rgb(70, 48, 28);
     --BackcgroundCard: rgb(39 152 77);
+    --Backcground: rgb(255, 255, 255);
     --InCard: rgb(255, 255, 255);
     --Text1Card: rgb(0, 0, 0);
     --Text2Card: rgb(255, 255, 255);
@@ -94,10 +116,19 @@
     --Text5Card: rgb(0, 0, 0);
     --Oblogka1: rgb(39 152 77);
     --Oblogka2: rgb(255, 255, 255);
-}
-::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+    --padding: 0mm;
+    --small: 54mm;
+    --big: 63mm;
+    --h: 296.8mm;
+    --w: 210mm;
+    --keglTitl: 16px;
+    --keglFon: 9px;
+    --keglPerem: 9px;
+    --keglVys: 9px;
+    --keglOsobTitl: 9px;
+    --keglOsobText: 9px;
+    --paddingCard: 10px;
+    --keglTitleNis: 16px;
 }
 @page {
 	margin: 0;

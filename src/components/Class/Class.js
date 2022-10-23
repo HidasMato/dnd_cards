@@ -9,14 +9,12 @@ export default function Class({targetClass, setTargetClass, classNames, setSpell
             <div className={style.Obod} onClick={() => {
                 setShow(!show);
             }}>
-            <div className={style.TargetClass}>
-                {targetClass}
-            </div>
-            <div
-                className={style.Button}
-            >
-                <div className={style.Down}/>
-            </div>
+                <div className={style.TargetClass}>
+                    {targetClass}
+                </div>
+                <div className={style.Button}>
+                    <div className={style.Down}/>
+                </div>
             </div>
             {
                 show &&
