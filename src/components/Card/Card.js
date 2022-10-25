@@ -24,7 +24,7 @@ function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRigh
         if (descriptionText) {
             descriptionText[0].style.fontSize = size + 'px';
             while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 -2 && size >= minSize) {
-                size = size - 0.01;
+                size = size - 0.05;
                 descriptionText[0].style.fontSize = size + 'px';
             }
             if (size <= minSize)

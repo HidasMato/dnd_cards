@@ -29,14 +29,16 @@
     padding: var(--paddingCard) var(--paddingCard) calc(var(--paddingCard) + var(--keglTitleNis));
     color: var(--Text1Card);
     overflow: hidden;
-    white-space: pre-wrap;
+    white-space: pre;
     .WhiteCard {
         width: 100%;
         height: 100%;
         background-color: var(--InCard);
         border-radius: 10px;
         overflow: hidden;
+        white-space: pre;
         .Zagolovok {
+            white-space: pre;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,6 +47,7 @@
             height: calc(var(--keglTitl)*1.3);
         }
         .School {
+            white-space: pre;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,10 +58,12 @@
             height: calc(var(--keglFon) * 1.2);
         }
         .Options {
+            white-space: pre;
             width: 100%;
             height: calc((var(--keglOsobText) + var(--keglOsobTitl)) * 1.6);
             display: flex;
             div {
+                white-space: pre;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
@@ -69,6 +74,7 @@
                 color: var(--Text5Card);
                 font-size: var(--keglOsobText);
                 p {
+                    white-space: pre;
                     color: var(--Text3Card);
                     font-size: var(--keglOsobTitl);
                 }
@@ -78,9 +84,9 @@
             padding: 2px;
             border-top:calc(var(--keglPerem) * 1.2) solid var(--BackcgroundCard);
             font-size: 8px;
-            white-space: pre;
             height: calc((var(--h) - 2 * var(--padding))/3 - 2*var(--paddingCard) - 1 * var(--keglTitl) - 1.3*var(--keglTitleNis) - var(--keglFon)*1.2 - 3.2 * (var(--keglOsobText) + var(--keglOsobTitl)) - 2px);
             p {
+                white-space: pre-wrap;
                 padding-bottom: 1px;
             }
             .Text {
@@ -91,6 +97,7 @@
                 min-height: 100%;
             }
             .HightLevelsTitle {
+                white-space: pre;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -103,6 +110,7 @@
                 font-size: var(--keglVys);  
             }
             .HightLevels {
+                white-space: pre-wrap;
                 padding: 2px;
             }
         }
@@ -115,6 +123,7 @@
         width: 100%;
         margin-top: calc(var(--paddingCard) * 0.5);
         overflow: hidden;
+        white-space: pre;
     }
 }
 .BorderRigth {
