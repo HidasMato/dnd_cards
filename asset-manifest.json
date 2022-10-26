@@ -1,14 +1,26 @@
 {
   "files": {
-    "main.css": "/dnd_cards/static/css/main.3b604559.css",
-    "main.js": "/dnd_cards/static/js/main.4461096c.js",
-    "static/media/Druid.svg": "/dnd_cards/static/media/Druid.0bfa91e73cc86e4ce42f14ce6e30a18a.svg",
+    "main.css": "/dnd_cards/static/css/main.419598a3.css",
+    "main.js": "/dnd_cards/static/js/main.431b7f73.js",
+    "static/media/Жрец.svg": "/dnd_cards/static/media/Жрец.4e1ac92892f4ff4a01a3ea05456af248.svg",
+    "static/media/Мистик.svg": "/dnd_cards/static/media/Мистик.f090bb76d6c92488f6cfeae88876622a.svg",
+    "static/media/Волшебник.svg": "/dnd_cards/static/media/Волшебник.88f2a54104729e356ae340314288b45b.svg",
+    "static/media/Колдун.svg": "/dnd_cards/static/media/Колдун.4b89b0e2fb8a1bd9ddfde1db4edf8b7f.svg",
+    "static/media/Чародей.svg": "/dnd_cards/static/media/Чародей.c60686f8b684b8dbea019e2dae73c442.svg",
+    "static/media/Паладин.svg": "/dnd_cards/static/media/Паладин.4909ffa1ba7e63f01d5414c1c688079d.svg",
+    "static/media/Следопыт.svg": "/dnd_cards/static/media/Следопыт.c4bca1d9aaf656153342cfd5f02f75f7.svg",
+    "static/media/Валькирия.svg": "/dnd_cards/static/media/Валькирия.527ca1ad99e382e1c28d67d5d61b0774.svg",
+    "static/media/Ксанатар.svg": "/dnd_cards/static/media/Ксанатар.442d3e4ef51b7aa4c97af9d88ec45190.svg",
+    "static/media/Бард.svg": "/dnd_cards/static/media/Бард.53010a77020e1c44b14c44785d15db2d.svg",
+    "static/media/Элементаль.svg": "/dnd_cards/static/media/Элементаль.832547cab00bd4baf08e106e982d02ed.svg",
+    "static/media/Военка.svg": "/dnd_cards/static/media/Военка.df5f9f9f965f136c0691154ddb7de3ae.svg",
+    "static/media/Друид.svg": "/dnd_cards/static/media/Друид.29228150906b4697af7bc5f5160278bb.svg",
     "index.html": "/dnd_cards/index.html",
-    "main.3b604559.css.map": "/dnd_cards/static/css/main.3b604559.css.map",
-    "main.4461096c.js.map": "/dnd_cards/static/js/main.4461096c.js.map"
+    "main.419598a3.css.map": "/dnd_cards/static/css/main.419598a3.css.map",
+    "main.431b7f73.js.map": "/dnd_cards/static/js/main.431b7f73.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b604559.css",
-    "static/js/main.4461096c.js"
+    "static/css/main.419598a3.css",
+    "static/js/main.431b7f73.js"
   ]
 }
