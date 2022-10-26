@@ -2,9 +2,19 @@
     position:relative;
     width: 33.3333%;
     height: 100%;
-    .Oborot {
-        width: 100%;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .Svg {
         height: 100%;
+        width: 100%;
+        svg {
+        height: 100%;
+        width: 100%;
+        }
     }
     .Number {
         color: var(--Oblogka1);
@@ -13,10 +23,10 @@
     }
     .Down {
         left: 29px;
-        bottom: 25px;
+        bottom: 27px;
     }
     .Up {
-        top: 23px;
+        top: 25px;
         right: 29px;
     }
 }

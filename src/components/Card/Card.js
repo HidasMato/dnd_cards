@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import style from './Card.module.scss'
-import {ReactComponent as Druid} from '../../components/Druid/Druid.svg';
+import {ReactComponent as Druid} from '../../components/BackSvg/Друид.svg';
+import {ReactComponent as Bard} from '../../components/BackSvg/Бард.svg';
+import { ReactComponent as Valkiria } from '../../components/BackSvg/Валькирия.svg';
 
-function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon }) {
+function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon, children }) {
     if (!spellControl)
         return <div className={style.Empty}></div>;
     if (back) {
@@ -11,7 +13,9 @@ function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRigh
             <div className={style.Obratka}>
             <div className={style.Number + ' ' + style.Up}>{num}</div>
             <div className={style.Number + ' ' + style.Down}>{num}</div>
-                <Druid className={style.Oborot} />
+                <div className={style.Svg}>
+                {children}
+                </div>
             </div>
         );
     }
