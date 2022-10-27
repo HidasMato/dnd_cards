@@ -4,17 +4,19 @@ import {ReactComponent as Druid} from '../../components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from '../../components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from '../../components/BackSvg/Валькирия.svg';
 
-function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon, children }) {
+function Card({ numberOption1,numberOption2,numberOption3,numberOption4,classText, minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon, children }) {
     if (!spellControl)
         return <div className={style.Empty}></div>;
     if (back) {
         const num = Number(card?.level[0]) || 0;
         return (
             <div className={style.Obratka}>
-            <div className={style.Number + ' ' + style.Up}>{num}</div>
-            <div className={style.Number + ' ' + style.Down}>{num}</div>
+                {numberOption2&&<div className={style.Number + ' ' + style.rigthTop}>{num}</div>}
+                {numberOption1&&<div className={style.Number + ' ' + style.leftTop}>{num}</div>}
+                {numberOption4&&<div className={style.Number + ' ' + style.rigthDown}>{num}</div>}
+                {numberOption3&&<div className={style.Number + ' ' + style.leftDown}>{num}</div>}
                 <div className={style.Svg}>
-                {children}
+                    {children}
                 </div>
             </div>
         );
@@ -27,16 +29,15 @@ function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRigh
         descriptionText = descriptionMain?.children;
         if (descriptionText) {
             descriptionText[0].style.fontSize = size + 'px';
-            while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 -2 && size >= minSize) {
+            while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 - 2 && Number(size) >= Number(minSize)) {
                 size = size - 0.05;
                 descriptionText[0].style.fontSize = size + 'px';
             }
-            if (size <= minSize)
-                console.log(spellControl.spellName," возможно переполнение");
+            if (Number(size) <= Number(minSize))
+                console.log(spellControl.spellName, " возможно переполнение");
             size = maxSize;
         }
-    }, 100)
-    
+    }, 300);
     return (
         <div className={style.MainCard + " " + (borderRight != 2 ? style.BorderRigth : "") + " " + (borderDown ? style.BorderDown : "")} onLoad= {() => console.log(123)}>
             <div className={style.WhiteCard}>
@@ -99,7 +100,7 @@ function Card({minSize, maxSize,istokPrint, back, spellControl, card, borderRigh
             </div>
             <div className={style.Futter}>
                 <div>
-                    {spellControl.targetClass}{!istokPrint ? null : (' - ' + spellControl.istokName)}
+                    {classText}{istokPrint}
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: fill;
     }
     .Svg {
         height: 100%;
@@ -17,17 +17,28 @@
         }
     }
     .Number {
-        color: var(--Oblogka1);
         position: absolute;
-        font-size: calc(15mm - var(--padding) / 5);
+        font-size: var(--keglNumber);
     }
-    .Down {
-        left: 29px;
-        bottom: 27px;
+    .rigthTop {
+        right: var(--rigthTopH);
+        top: var(--rigthTopV);
+        color: var(--Num2);
     }
-    .Up {
-        top: 25px;
-        right: 29px;
+    .leftTop {
+        left: var(--leftTopH);
+        top: var(--leftTopV);
+        color: var(--Num1);
+    }
+    .rigthDown {
+        right: var(--rigthDownH);
+        bottom: var(--rigthDownV);
+        color: var(--Num4);
+    }
+    .leftDown {
+        left: var(--leftDownH);
+        bottom: var(--leftDownV);
+        color: var(--Num3);
     }
 }
 .Empty {

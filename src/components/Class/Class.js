@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import style from  './Class.module.scss'
 
-export default function Class({targetClass, setTargetClass, classNames, setSpellControl }) {
+export default function Class({setClassText,targetClass, setTargetClass, classNames, setSpellControl }) {
     const [show, setShow] = useState(false);
     document.addEventListener('click', () => { setShow(false) });
     return (
@@ -24,6 +24,7 @@ export default function Class({targetClass, setTargetClass, classNames, setSpell
                             <div
                                 onClick={() => {
                                     setTargetClass(thisClass);
+                                    setClassText(thisClass);
                                     setShow(false);
                                     setSpellControl({});
                                 }}

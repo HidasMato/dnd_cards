@@ -20,7 +20,6 @@ export default function Level({ levelName, allLevelSpells, spellControl, istokNa
         })
         setShowOk(flag);
     }
-    const r = [];
     return (
         <div className={style.MainLevel}>
             <div className={style.Flex}>
@@ -31,8 +30,8 @@ export default function Level({ levelName, allLevelSpells, spellControl, istokNa
                     {useEffect(() => { updateOk() })}
                     {showOk && <div className={style.Ok} />}
                 </div>
-                {levelName}
                 <div className={style.Tre} onClick={() => {setshowSpells(!showSpells)}} />
+                <div onClick={() => {setshowSpells(!showSpells)}}>{levelName}</div>
             </div>            
             {showSpells &&
                 allLevelSpells?.map(spell => {

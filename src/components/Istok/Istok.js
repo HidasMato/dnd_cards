@@ -31,11 +31,13 @@ export default function Istok({ printIstok, setPrintIstok, istok, allSpells, onl
                     {useEffect(() => { updateOk() })}
                     {showOk && <div className={style.Ok} />}
                 </div>
-                {istok}
                 <div className={style.Tre} onClick={() => { setShowLevels(!showLevels) }} />
+                <div className={style.Name} onClick={() => { setShowLevels(!showLevels) }} >
+                    {istok}
+                </div>
                 <div className={style.Print}>
-                    <input type="checkbox" id={istok} checked={printIstok[istok]} onChange={(e) => {
-                        setPrintIstok({ ...printIstok, [istok]: e.target.checked });
+                    <input type="text" id={istok} defaultValue={ ' - ' + istok} onChange={(e) => {
+                        setPrintIstok({ ...printIstok, [istok]: e.target.value });
                         }}/>
                 </div>
             </div>

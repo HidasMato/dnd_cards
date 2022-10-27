@@ -6,6 +6,7 @@
 .MainComponent {
     font-weight: 800;
     font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align:justify;
     font-style: normal;
     font-variant: small-caps;
     color: var(--color4);
@@ -14,63 +15,222 @@
     overflow-y: scroll;
     min-height: 100vh;
     .Menu {
-        .InputFile {
-            overflow: hidden;
-            max-width: 135px;
-        }
-        .Flex {
-            display: flex;
-            .Oborot{
-                input {
-                    width: 40px;height: 40px;
-                    opacity: 1;
-                }
-            }
-        }
-        min-width: 350px;
-        max-width: 350px;
+        white-space: pre;
         border-right: 3px solid var(--color2);
         margin-right: 30px;
         padding: 20px;
-        .Setting {
-            margin-top: 40px;
-            .ChoseKegl {
-                padding-top: 5px;
-                display: flex;
-                align-items: center;
-                input {
-                    padding-left: 3px;
-                    margin-left: 6px;
-                    width: 90px;
-                    color: var(--color4);
-                    background-color: var(--color1);
+        min-width: 480px;   
+        overflow-y: scroll;
+        height: 100vh;
+        .InputFile {
+            max-height: 440px;
+            overflow: hidden;
+            display: flex;
+            align-items: baseline;
+            .Text {
+                width: 227px;
+            }
+            label {
+                margin-left: 10px;
+                padding: 3px;
+                color: var(--color4);
+                background-color: var(--color1);
+                border: 1px solid var(--color4);
+                margin-right: 10px;
+            }
+            input {
+                display: none;
+            }
+            margin-bottom: 10px;
+            margin-top: 9px;
+            :hover {
+                cursor: pointer;
+            }
+        }
+        .MySelect {
+            display: flex;
+            align-items: baseline;
+            .Lists {
+                position: absolute;
+                background-color: var(--color1);
+                border: 1px solid var(--color4);
+                margin-left: 10px;
+                width: 201px;
+                max-height: 400px;
+                overflow: scroll;
+                .List {
+                    padding: 10px;
+                }
+                .List:hover {
+                    cursor: pointer;
+                    background-color: var(--color3);
                 }
             }
-            .ChoseColor {
+            .Text {
+                width: 226px;
+            }
+            .SelectObod {
+                margin-left: 10px;
                 display: flex;
+                padding: 4px;
                 align-items: center;
-                input {
-                    background-color: transparent;
+                justify-content: center;
+                background-color: var(--color1);
+                border: 1px solid var(--color4);
+                margin-top: 10px;
+                .Tre {
+                    margin-left: 4px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 11px solid var(--color2);
+                    border-radius: 10px;
+                    margin-top: 2px;
+                }  
+                .SelectText {
+                    border-color: black;
                 }
-                .As {
-                    color: var(--color2);
-                    background-color: var(--color1);
-                    padding: 3px;
-                    border-radius: 6px;
+            }
+            .SelectObod:hover {
+                cursor: pointer;
+            }
+        }
+        .Flex {
+            display: flex;
+            .Text {
+                width: 240px;
+                margin-top: 5px;
+                color: var(--color4);
+            }
+            input {
+                max-width: 200px;
+                padding: 1px;
+                padding-left: 3px;
+                color: var(--color4);
+                background-color: var(--color1);
+                border: 1px solid var(--color4);
+            }
+        }
+    }
+    .Oborot{
+        max-width: 180px;
+        padding: 4px;
+        border-radius: 6px;
+        margin-top: 5px;
+        color: var(--color4);
+        background-color: var(--color1);
+        border: 1px solid var(--color4);
+    }
+    .Oborot:hover {
+        cursor: pointer;
+    }
+    .Setting {
+        white-space: nowrap;
+        margin-left: 30px;
+        height: 100vh;
+        padding: 20px;
+        min-width: 550px;
+        border-left: 3px solid var(--color2);
+        .NumberSetting {
+            margin-top: 10px;
+            display: flex;
+            .Numbers {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .Number {
+                    display: flex;
+                    padding-left: 10px;
+                    .ChoseColor {
+                        max-width: 100px;
+                        display: flex;
+                    }
+                    .Chose {
+                        padding-right: 20px;
+                        input {
+                            margin-left: 5px;
+                            padding-left: 3px;
+                            width: 40px;
+                            width: 40px;
+                            color: var(--color4);
+                            background-color: var(--color1);
+                        }
+                    }
                 }
-                .As:hover {
-                    color: var(--color2);
-                    background-color: var(--color4);
-                    cursor: pointer;
+            }
+            .Cardd {
+                border: var(--color2) solid 3px;
+                width:100px;
+                height:120px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                .LineNumber {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;  
+                    .As {
+                        color: var(--color2);
+                        background-color: var(--color1);
+                        padding: 5px;
+                        border-radius: 6px;
+                    }
+                    .As:hover {
+                        color: var(--color2);
+                        background-color: var(--color4);
+                        cursor: pointer;
+                    }
+                    .Yes {
+                        color: var(--color2);
+                        background-color: var(--color4);
+                    }
                 }
-                .Yes {
-                    color: var(--color2);
-                    background-color: var(--color4);
-                }
+            }
+        }
+        .ChoseKegl {
+            padding-top: 5px;
+            display: flex;
+            align-items: center;
+            input {
+                padding-left: 3px;
+                margin-left: 2px;
+                width: 66px;
+                color: var(--color4);
+                background-color: var(--color1);
+                margin-right: 5px;
+            }
+        }
+        .ChoseColor {
+            display: flex;
+            align-items: center;
+            input {
+                width: 70px;
+                background-color: transparent;
+                margin-right: 5px;
+            }
+            .As {
+                color: var(--color2);
+                background-color: var(--color1);
+                padding: 3px;
+                border-radius: 6px;
+                margin-left: 5px;
+            }
+            .As:hover {
+                color: var(--color2);
+                background-color: var(--color4);
+                cursor: pointer;
+            }
+            .Yes {
+                color: var(--color2);
+                background-color: var(--color4);
             }
         }
     }
     .AllCards {
+        min-width: var(--w);
         .PageCards {
             height: var(--h);
             width: var(--w);
@@ -107,6 +267,9 @@
         .CardsLine {
             break-inside: avoid;
         }
+        .Setting {
+            display: none;
+        }
     }
     --color1: #eb9e5fd9;
     --color2: #e18a39;
@@ -136,6 +299,19 @@
     --keglOsobText: 9px;
     --paddingCard: 10px;
     --keglTitleNis: 16px;
+    --rigthTopV: 25px;
+    --rigthTopH: 27px;
+    --leftTopV: 25px;
+    --leftTopH: 27px;
+    --rigthDownV: 25px;
+    --rigthDownH: 27px;
+    --leftDownV: 25px;
+    --leftDownH: 27px;
+    --keglNumber: 60px;
+    --Num1: rgb(0, 0, 0);
+    --Num2: rgb(0, 0, 0);
+    --Num3: rgb(0, 0, 0);
+    --Num4: rgb(0, 0, 0);
 }
 @page {
 	margin: 0;

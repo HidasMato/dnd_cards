@@ -2,8 +2,18 @@
     .Flex {
         display: flex;
         align-items: center;
+        .Print {
+            input {
+                width: 200px;
+                color: var(--color4);
+                background-color: var(--color1);
+                border: 1px solid var(--color4);
+            }
+        }
+        .Name {
+            width: 200px;
+        }
         .Radio {
-            margin-right: 4px;
             width: 20px;
             height: 20px;
             background-color: var(--color1);

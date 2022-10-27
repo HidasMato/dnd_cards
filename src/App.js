@@ -19,7 +19,13 @@ import { ReactComponent as Elemental } from './components/BackSvg/Элемент
 
 
 export default function App() {
+    const [numberOption1, setNumberOption1] = useState(false);
+    const [numberOption2, setNumberOption2] = useState(false);
+    const [numberOption3, setNumberOption3] = useState(false);
+    const [numberOption4, setNumberOption4] = useState(false);
     const [pyt, setPyt] = useState(undefined);
+    const [classText, setClassText] = useState(undefined);
+    const [showSelect, setShowSelect] = useState(false);
     const [select, setSelect] = useState("Друид");
     const [data, setData] = useState(undefined);
     const [changeKegl, setChangeKegl] = useState(0);
@@ -29,10 +35,10 @@ export default function App() {
     const [printIstok, setPrintIstok] = useState({});
     const [oborot, setOborot] = useState(false);
     const [targetClass, setTargetClass] = useState("");
-    const [spellControl, setSpellControl] = useState({}); //Список всех заклинаний в стиле подписи: Класс - Уровень - Источник
+    const [spellControl, setSpellControl] = useState({});
     const classesName = [];
-    const [colorMas, setColorMas] = useState(["#27984d", "#ffffff", "#000000", "#ffffff", "#27984d", "#000000", "#000000", "#27984d", "#ffffff", "#ffffff"]);
-    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1,1]);
+    const [colorMas, setColorMas] = useState(["#27984d", "#ffffff", "#000000", "#ffffff", "#27984d", "#000000", "#000000", "#27984d", "#ffffff", "#ffffff", "#000000", "#000000", "#000000", "#000000"]);
+    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
     let colors;
     const getData = setInterval(() => {
         setData(document.getElementById('MainComponent')?.newOption);
@@ -101,41 +107,45 @@ export default function App() {
     const getCards = () => {
         const kolvo = Object.keys(spellControl).length - 1;
         let masCards = [];
-        return Object.keys(spellControl).map((spellName, index) => {
-            if (index % 9 == 0)
-                masCards = [];
-            masCards[index % 9] = spellControl[spellName];
-            if (index % 9 == 8 || index == kolvo) {
-                return (
-                    <div className={style.PageCards} key={"group" + index}>
-                        <div key={index - 8} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
-                            {
-                                [masCards[0], masCards[1], masCards[2]].map((spell, indexC) => {
-                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 2)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
-                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 2)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
-                                })
-                            }
-                        </div>
-                        <div key={index - 5} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
-                            {
-                                [masCards[3],masCards[4],masCards[5]].map((spell, indexC) => {
-                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 5)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
-                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 5)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
-                                })
-                            }
-                        </div>
-                        <div key={index - 2} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
-                            {
-                                [masCards[6], masCards[7], masCards[8]].map((spell, indexC) => {
-                                    if (oborot) return <Card minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 8)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
-                                    else return <Card minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 8)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
-                                })
-                            }
-                        </div>
-                    </div>
-                );
-            }
-        })
+        return (
+            <div className={style.AllCards}>
+                {Object.keys(spellControl).map((spellName, index) => {
+                    if (index % 9 == 0)
+                        masCards = [];
+                    masCards[index % 9] = spellControl[spellName];
+                    if (index % 9 == 8 || index == kolvo) {
+                        return (
+                            <div className={style.PageCards} key={"group" + index}>
+                                <div key={index - 8} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                                    {
+                                        [masCards[0], masCards[1], masCards[2]].map((spell, indexC) => {
+                                            if (oborot) return <Card numberOption1={numberOption1} numberOption2={numberOption2} numberOption3={numberOption3} numberOption4={numberOption4} minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 2)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
+                                            else return <Card classText={classText} minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 2)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                        })
+                                    }
+                                </div>
+                                <div key={index - 5} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                                    {
+                                        [masCards[3],masCards[4],masCards[5]].map((spell, indexC) => {
+                                            if (oborot) return <Card numberOption1={numberOption1} numberOption2={numberOption2} numberOption3={numberOption3} numberOption4={numberOption4} minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 5)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
+                                            else return <Card classText={classText} minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 5)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                        })
+                                    }
+                                </div>
+                                <div key={index - 2} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                                    {
+                                        [masCards[6], masCards[7], masCards[8]].map((spell, indexC) => {
+                                            if (oborot) return <Card numberOption1={numberOption1} numberOption2={numberOption2} numberOption3={numberOption3} numberOption4={numberOption4} minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 8)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
+                                            else return <Card classText={classText} minSize={minSize} maxSize={maxSize} istokPrint={printIstok[spell?.istokName]} keglFon={keglFon} borderDown={!(index % 9 == 8)} borderRight={indexC} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}></Card>
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        );
+                    }
+                })}
+            </div>
+        )
     };
     const changeColor = () => {
         document.getElementById('MainComponent')?.style.setProperty('--BackcgroundCard', colorMas[0]);
@@ -148,12 +158,15 @@ export default function App() {
         document.getElementById('MainComponent')?.style.setProperty('--Oblogka1', colorMas[7]);
         document.getElementById('MainComponent')?.style.setProperty('--Oblogka2', colorMas[8]);
         document.getElementById('MainComponent')?.style.setProperty('--Backcground', colorMas[9]);
+        document.getElementById('MainComponent')?.style.setProperty('--Num1', colorMas[10]);
+        document.getElementById('MainComponent')?.style.setProperty('--Num2', colorMas[11]);
+        document.getElementById('MainComponent')?.style.setProperty('--Num3', colorMas[12]);
+        document.getElementById('MainComponent')?.style.setProperty('--Num4', colorMas[13]);
     };
     const getSetting = () => {
         return (
-            <div className={style.Setting}>
+            <div name={"scrollMe"} className={style.Setting}>
                 <div className={style.ChoseColor}>
-                    Обложка
                     <input name={'colorInput'} type="color" defaultValue={colorMas[0]} onInput={(e) => {
                         const R = colorMas;
                         R[0] = e.target.value;
@@ -180,13 +193,29 @@ export default function App() {
                         if (like[7] == 0) {
                             R[7] = R[0];
                             colors[7].value = R[0];
+                            if (like[10] == 0) {
+                                R[10] = R[7];
+                                colors[10].value = R[7];
+                                if (like[11] == 0) {
+                                    R[11] = R[7];
+                                    colors[11].value = R[7];
+                                }
+                                if (like[12] == 0) {
+                                    R[12] = R[7];
+                                    colors[12].value = R[7];
+                                }
+                                if (like[13] == 0) {
+                                    R[13] = R[7];
+                                    colors[13].value = R[7];
+                                }
+                            }
                         }
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Обложка
                 </div>
                 <div className={style.ChoseColor}>
-                    Внутри
                     <input name={'colorInput'} type="color" defaultValue={colorMas[1]} onInput={(e) => {
                         const R = colorMas;
                         R[1] = e.target.value;
@@ -201,22 +230,24 @@ export default function App() {
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Внутри
                 </div>
                 <div className={style.ChoseColor}>
-                    Заголовок
                     <input name={'colorInput'} type="color" defaultValue={colorMas[2]} onInput={(e) => {
                         const R = colorMas;
                         R[2] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Заголовок
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[2] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[2] = colorMas[6];
-                            e.target.previousSibling.value = colorMas[6];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[6];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -224,7 +255,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[2] = 1;
                             setLike(L);
@@ -234,20 +265,21 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    На фоне
                     <input name={'colorInput'} type="color" defaultValue={colorMas[3]} onInput={(e) => {
                         const R = colorMas;
                         R[3] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    На фоне
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[3] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[3] = colorMas[1];
-                            e.target.previousSibling.value = colorMas[1];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[1];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -255,7 +287,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[3] = 1;
                             setLike(L);
@@ -265,20 +297,21 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Особое Загл
                     <input name={'colorInput'} type="color" defaultValue={colorMas[4]} onInput={(e) => {
                         const R = colorMas;
                         R[4] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Особое Загл
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[4] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[4] = colorMas[0];
-                            e.target.previousSibling.value = colorMas[0];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[0];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -286,7 +319,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[4] = 1;
                             setLike(L);
@@ -296,20 +329,21 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Особое Текст
                     <input name={'colorInput'} type="color" defaultValue={colorMas[5]} onInput={(e) => {
                         const R = colorMas;
                         R[5] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Особое Текст
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[5] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[5] = colorMas[6];
-                            e.target.previousSibling.value = colorMas[6];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[6];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -317,7 +351,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[5] = 1;
                             setLike(L);
@@ -327,7 +361,6 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Текст
                     <input name={'colorInput'} type="color" defaultValue={colorMas[6]} onInput={(e) => {
                         const R = colorMas;
                         R[6] = e.target.value;
@@ -342,7 +375,9 @@ export default function App() {
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Текст
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[6] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
@@ -355,16 +390,17 @@ export default function App() {
                                 R[5] = R[6];
                                 colors[5].value = R[6];
                             }
-                            e.target.previousSibling.value = colorMas[0];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[0];
+                            t.disabled = true;
                             setColorMas(R);
+                            console.log(colorMas);
                             changeColor();
                             const L = like;
                             L[6] = 0;
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[6] = 1;
                             setLike(L);
@@ -374,20 +410,53 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Обратка 1
                     <input name={'colorInput'} type="color" defaultValue={colorMas[7]} onInput={(e) => {
                         const R = colorMas;
                         R[7] = e.target.value;
+                        if (like[10] == 0) {
+                            R[10] = R[7];
+                            colors[10].value = R[7];
+                            if (like[11] == 0) {
+                                R[11] = R[7];
+                                colors[11].value = R[7];
+                            }
+                            if (like[12] == 0) {
+                                R[12] = R[7];
+                                colors[12].value = R[7];
+                            }
+                            if (like[13] == 0) {
+                                R[13] = R[7];
+                                colors[13].value = R[7];
+                            }
+                        }
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Обратка 1
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[7] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[7] = colorMas[0];
-                            e.target.previousSibling.value = colorMas[0];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[0];
+                            t.disabled = true;
+                            if (like[10] == 0) {
+                                R[10] = R[7];
+                                colors[10].value = R[7];
+                                if (like[11] == 0) {
+                                    R[11] = R[7];
+                                    colors[11].value = R[7];
+                                }
+                                if (like[12] == 0) {
+                                    R[12] = R[7];
+                                    colors[12].value = R[7];
+                                }
+                                if (like[13] == 0) {
+                                    R[13] = R[7];
+                                    colors[13].value = R[7];
+                                }
+                            }
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -395,7 +464,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[7] = 1;
                             setLike(L);
@@ -405,20 +474,21 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Обратка 2
                     <input name={'colorInput'} type="color" defaultValue={colorMas[8]} onInput={(e) => {
                         const R = colorMas;
                         R[8] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Обратка 2
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[8] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[8] = colorMas[1];
-                            e.target.previousSibling.value = colorMas[1];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[1];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -426,7 +496,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[8] = 1;
                             setLike(L);
@@ -436,20 +506,21 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseColor}>
-                    Фон при печати
                     <input name={'colorInput'} type="color" defaultValue={colorMas[9]} onInput={(e) => {
                         const R = colorMas;
                         R[9] = e.target.value;
                         setColorMas(R);
                         changeColor();
                     }} />
+                    Фон при печати
                     <div className={style.As} onClick={(e) => {
+                        const t = e.target.previousSibling.previousSibling;
                         if (like[9] == 1) {
                             e.target.className = style.As + ' ' + style.Yes;
                             const R = colorMas;
                             R[9] = colorMas[0];
-                            e.target.previousSibling.value = colorMas[0];
-                            e.target.previousSibling.disabled = true;
+                            t.value = colorMas[0];
+                            t.disabled = true;
                             setColorMas(R);
                             changeColor();
                             const L = like;
@@ -457,7 +528,7 @@ export default function App() {
                             setLike(L);
                         } else {
                             e.target.className = style.As;
-                            e.target.previousSibling.disabled = false;
+                            t.disabled = false;
                             const L = like;
                             L[9] = 1;
                             setLike(L);
@@ -467,114 +538,392 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.ChoseKegl}>
-                    Поля в милиметрах
                     <input name={'kegl'} type="number" defaultValue={0} min={0} max={10} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--padding', e.target.value + 'mm');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Поля в милиметрах
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль заголовка
                     <input name={'kegl'} type="number" defaultValue={16} min={0} max={24} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglTitl', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль заголовка
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль на фоне верх
                     <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglFon', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль на фоне верх
                 </div>
                 <div className={style.ChoseKegl}>
-                    Средняя перемычка
                     <input name={'kegl'} type="number" defaultValue={9} min={1} max={15} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglPerem', e.target.value + 'px');
                         setKeglFon(e.target.value);
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Средняя перемычка
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль высокий уровень
                     <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglVys', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль высокий уровень
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль особое заголовок
                     <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglOsobTitl', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль особое заголовок
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль особое текст
                     <input name={'kegl'} type="number" defaultValue={9} min={0} max={15} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglOsobText', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль особое текст
                 </div>
                 <div className={style.ChoseKegl}>
-                    Кегль нижней подписи
                     <input name={'kegl'} type="number" defaultValue={16} min={0} max={28} onChange={(e) => {
                         document.getElementById('MainComponent')?.style.setProperty('--keglTitleNis', e.target.value + 'px');
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Кегль нижней подписи
                 </div>
                 <div className={style.ChoseKegl}>
-                    Минимальный кегль текста
-                    <input name={'kegl'} type="number" defaultValue={6} min={2} max={16} onChange={(e) => {
+                    <input name={'kegl'} type="number" defaultValue={6} min={2} max={maxSize} onChange={(e) => {
                         setMinSize(e.target.value);
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Минимальный кегль текста
                 </div>
                 <div className={style.ChoseKegl}>
-                    Максимальный кегль текста
-                    <input name={'kegl'} type="number" defaultValue={8} min={4} max={24} onChange={(e) => {
+                    <input name={'kegl'} type="number" defaultValue={8} min={minSize} max={24} onChange={(e) => {
                         setMaxSize(e.target.value);
                         setChangeKegl(changeKegl + 1);
+                        console.clear();
                     }} />
+                    Максимальный кегль текста
+                </div>
+                <div className={style.NumberSetting}>
+                    <div className={style.Cardd}>
+                        <div className={style.LineNumber}>
+                            <div className={style.As} onClick={(e) => {
+                                if ( numberOption1== false) {
+                                    e.target.className = style.As + ' ' + style.Yes;
+                                    setNumberOption1(true);
+                                } else {
+                                    e.target.className = style.As;
+                                    setNumberOption1(false);
+                                }
+                            }}>N1</div>
+                            <div className={style.As} onClick={(e) => {
+                                if ( numberOption2== false) {
+                                    e.target.className = style.As + ' ' + style.Yes;
+                                    setNumberOption2(true);
+                                } else {
+                                    e.target.className = style.As;
+                                    setNumberOption2(false);
+                                }
+                            }}>N2</div>
+                        </div>
+                        <div className={style.LineNumber}>
+                            <div className={style.As} onClick={(e) => {
+                                if ( numberOption3== false) {
+                                    e.target.className = style.As + ' ' + style.Yes;
+                                    setNumberOption3(true);
+                                } else {
+                                    e.target.className = style.As;
+                                    setNumberOption3(false);
+                                }
+                            }}>N3</div>
+                            <div className={style.As} onClick={(e) => {
+                                if ( numberOption4== false) {
+                                    e.target.className = style.As + ' ' + style.Yes;
+                                    setNumberOption4(true);
+                                } else {
+                                    e.target.className = style.As;
+                                    setNumberOption4(false);
+                                }
+                            }}>N4</div>
+                        </div>
+                    </div>
+                    <div className={style.Numbers}>
+                        <div className={style.Number}>
+                            <div className={style.Chose}>
+                                N1 H
+                                <input name={'kegl'} type="number" defaultValue={27} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--leftTopH', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.Chose}>
+                                V
+                                <input name={'kegl'} type="number" defaultValue={25} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--leftTopV', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.ChoseColor}>
+                                <input name={'colorInput'} type="color" defaultValue={colorMas[10]} onInput={(e) => {
+                                    const R = colorMas;
+                                    R[10] = e.target.value;
+                                    if (like[11] == 0) {
+                                        console.log(123);
+                                        R[11] = R[10];
+                                        colors[11].value = R[10];
+                                    }
+                                    if (like[12] == 0) {
+                                        R[12] = R[10];
+                                        colors[12].value = R[10];
+                                    }
+                                    if (like[13] == 0) {
+                                        R[13] = R[10];
+                                        colors[13].value = R[10];
+                                    }
+                                    setColorMas(R);
+                                    changeColor();
+                                }} />
+                                <div className={style.As} onClick={(e) => {
+                                    const t = e.target.previousSibling;
+                                    if (like[10] == 1) {
+                                        e.target.className = style.As + ' ' + style.Yes;
+                                        const R = colorMas;
+                                        R[10] = colorMas[7];
+                                        t.value = colorMas[7];
+                                        t.disabled = true;
+                                        setColorMas(R);
+                                        changeColor();
+                                        const L = like;
+                                        L[10] = 0;
+                                        setLike(L);
+                                    } else {
+                                        e.target.className = style.As;
+                                        t.disabled = false;
+                                        const L = like;
+                                        L[10] = 1;
+                                        setLike(L);
+                                    }
+                                }}>
+                                    Обрат1
+                                </div>
+                            </div>
+                        </div>
+                        <div className={style.Number}>
+                            <div className={style.Chose}>
+                                N2 H
+                                <input name={'kegl'} type="number" defaultValue={27} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--rigthTopH', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.Chose}>
+                                V
+                                <input name={'kegl'} type="number" defaultValue={25} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--rigthTopV', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.ChoseColor}>
+                                <input name={'colorInput'} type="color" defaultValue={colorMas[11]} onInput={(e) => {
+                                    const R = colorMas;
+                                    R[11] = e.target.value;
+                                    setColorMas(R);
+                                    changeColor();
+                                }} />
+                                <div className={style.As} onClick={(e) => {
+                                    const t = e.target.previousSibling;
+                                    if (like[11] == 1) {
+                                        e.target.className = style.As + ' ' + style.Yes;
+                                        const R = colorMas;
+                                        R[11] = colorMas[10];
+                                        t.value = colorMas[10];
+                                        t.disabled = true;
+                                        setColorMas(R);
+                                        changeColor();
+                                        const L = like;
+                                        L[11] = 0;
+                                        setLike(L);
+                                    } else {
+                                        e.target.className = style.As;
+                                        t.disabled = false;
+                                        const L = like;
+                                        L[11] = 1;
+                                        setLike(L);
+                                    }
+                                }}>
+                                    Как N1
+                                </div>
+                            </div>
+                        </div>
+                        <div className={style.Number}>
+                            <div className={style.Chose}>
+                                N3 H
+                                <input name={'kegl'} type="number" defaultValue={27} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--leftDownH', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.Chose}>
+                                V
+                                <input name={'kegl'} type="number" defaultValue={25} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--leftDownV', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.ChoseColor}>
+                                <input name={'colorInput'} type="color" defaultValue={colorMas[12]} onInput={(e) => {
+                                    const R = colorMas;
+                                    R[12] = e.target.value;
+                                    setColorMas(R);
+                                    changeColor();
+                                }} />
+                                <div className={style.As} onClick={(e) => {
+                                    const t = e.target.previousSibling;
+                                    if (like[12] == 1) {
+                                        e.target.className = style.As + ' ' + style.Yes;
+                                        const R = colorMas;
+                                        R[12] = colorMas[10];
+                                        t.value = colorMas[10];
+                                        t.disabled = true;
+                                        setColorMas(R);
+                                        changeColor();
+                                        const L = like;
+                                        L[12] = 0;
+                                        setLike(L);
+                                    } else {
+                                        e.target.className = style.As;
+                                        t.disabled = false;
+                                        const L = like;
+                                        L[12] = 1;
+                                        setLike(L);
+                                    }
+                                }}>
+                                    Как N1
+                                </div>
+                            </div>
+                        </div>
+                        <div className={style.Number}>
+                            <div className={style.Chose}>
+                                N4 H
+                                <input name={'kegl'} type="number" defaultValue={27} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--rigthDownH', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.Chose}>
+                                V
+                                <input name={'kegl'} type="number" defaultValue={25} min={0} max={300} onChange={(e) => {
+                                    document.getElementById('MainComponent')?.style.setProperty('--rigthDownV', e.target.value + 'px');
+                                }} />
+                            </div>
+                            <div className={style.ChoseColor}>
+                                <input name={'colorInput'} type="color" defaultValue={colorMas[13]} onInput={(e) => {
+                                    const R = colorMas;
+                                    R[13] = e.target.value;
+                                    setColorMas(R);
+                                    changeColor();
+                                }} />
+                                <div className={style.As} onClick={(e) => {
+                                    const t = e.target.previousSibling;
+                                    if (like[13] == 1) {
+                                        e.target.className = style.As + ' ' + style.Yes;
+                                        const R = colorMas;
+                                        R[13] = colorMas[10];
+                                        t.value = colorMas[10];
+                                        t.disabled = true;
+                                        setColorMas(R);
+                                        changeColor();
+                                        const L = like;
+                                        L[13] = 0;
+                                        setLike(L);
+                                    } else {
+                                        e.target.className = style.As;
+                                        t.disabled = false;
+                                        const L = like;
+                                        L[13] = 1;
+                                        setLike(L);
+                                    }
+                                }}>
+                                    Как N1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
-    return (
-        <div className={style.MainComponent} id={'MainComponent'}>
-            <div className={style.Menu}>
+    document.addEventListener('click', () => { setShowSelect(false) });
+    window.addEventListener('scroll', function () {
+        Array.from(document.getElementsByName('scrollMe')).map(elem => {
+            elem.style.marginTop = window.pageYOffset + 'px';
+        })
+    });
+    const getMenu = () => {
+        return (
+            <div name={"scrollMe"} className={style.Menu}>
                 <div className={style.Flex}>
-                    <Class targetClass={targetClass} setTargetClass={setTargetClass} classNames={classesName} setSpellControl={setSpellControl}></Class>
-                    <div>
-                    <div className={style.Oborot}>
-                        <input type="checkbox" name="qwe" id="ewq" onChange={(e) => {
-                            setOborot(e.target.checked);
-                        }}/>
-                    </div>
-                        <select id="mySelect" defaultValue={"Друид"} onChange={(e) => {
-                            setSelect(e.target.value);
-                    }}>
-                        <option value="Кастомная">Кастомная</option>
-                        <option value="Бард">Бард</option>
-                        <option value="Валькирия">Валькирия</option>
-                        <option value="Военка">Военка</option>
-                        <option value="Волшебник">Волшебник</option>
-                        <option value="Друид">Друид</option>
-                        <option value="Жрец">Жрец</option>
-                        <option value="Колдун">Колдун</option>
-                        <option value="Ксанатар">Ксанатар</option>
-                        <option value="Мистик">Мистик</option>
-                        <option value="Паладин">Паладин</option>
-                        <option value="Следопыт">Следопыт</option>
-                        <option value="Чародей">Чародей</option>
-                        <option value="Элементаль">Элементаль</option>
-                    </select>
-                    <input className={style.InputFile} type="file" name="" id="inputfile" onInput={(e) => {
-                        setPyt(e.target.files[0]);
-                        }} />
-                        {pyt!=undefined ? pyt.name : "Файл не выбран"}
-                    </div>
+                    <Class targetClass={targetClass} setClassText={setClassText} setTargetClass={setTargetClass} classNames={classesName} setSpellControl={setSpellControl}></Class>
                 </div>
+                {data?.classes[targetClass] &&
+                    <div>
+                        <div className={style.Oborot} onClick={() => {
+                            setOborot(!oborot);
+                        }}>Лицевые/Обратные</div>
+                        <div className={style.MySelect} onClick={(e) => e.stopPropagation()}>
+                            <div className={style.Text}>Выбрать обратку из списка</div>
+                            <div>
+                            <div className={style.SelectObod} onClick={() => {setShowSelect(!showSelect)}}>
+                                <div className={style.SelectText}>
+                                    {select}
+                                </div>
+                                <div className={style.Tre} />
+                            </div>
+                            {showSelect &&
+                                <div className={style.Lists}>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Кастомная"); }}>Кастомная</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Бард"); }}>Бард</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Военка"); }}>Военка</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Волшебник"); }}>Волшебник</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Друид"); }}>Друид</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Жрец"); }}>Жрец</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Колдун"); }}>Колдун</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ксанатар"); }}>Ксанатар</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Мистик"); }}>Мистик</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Паладин"); }}>Паладин</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Следопыт"); }}>Следопыт</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Чародей"); }}>Чародей</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Элементаль"); }}>Элементаль</div>
+                                    <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия"); }}>Валькирия</div>
+                                        
+                                </div>
+                            }
+                            </div>
+                        </div>
+                        <div className={style.InputFile}>
+                            <div className={style.Text}>Выбрать кастомный файл</div>
+                            <label htmlFor="inputfile">Тык</label>
+                            <input type="file" name="" id="inputfile" onInput={(e) => {setPyt(e.target.files[0]);}} />
+                            {pyt!=undefined ? pyt.name : "Файл не выбран"}
+                        </div>
+                        <div className={style.Flex}>
+                            <div className={style.Text}>Нижняя подпись</div>
+                            <div className={style.Print}>
+                                <input type="text" value={classText} onChange={(e) => {
+                                    setClassText(e.target.value);
+                                    console.clear();
+                                }}/>
+                            </div>
+                        </div>
+                    </div>
+                }
                 {
                     data?.classes[targetClass]
                         ? Object.keys(data?.classes[targetClass]).map(istok => {
@@ -586,19 +935,20 @@ export default function App() {
                                 onlyUseLevels.add(level);
                             })
                             if (printIstok[istok] == undefined) {
-                                {setPrintIstok({...printIstok,[istok]:true})}
+                                {setPrintIstok({...printIstok,[istok]:' - ' + istok})}
                             }
                             return <Istok key={istok} setPrintIstok={setPrintIstok} printIstok={printIstok} targetClass={targetClass} istok={istok} allSpells={allSpells} onlyUseLevels={[...onlyUseLevels]} spellControl={spellControl} updateSpellControll={updateSpellControll}></Istok>
                         })
                         : null
                 }
-                {getSetting()}
             </div>
-            <div className={style.AllCards}>
-                {
-                    getCards()
-                }
-            </div>
+        )
+    }
+    return (
+        <div className={style.MainComponent} id={'MainComponent'}>
+            {getMenu()}
+            {getCards()}
+            {getSetting()}
         </div>
     );
 }
