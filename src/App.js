@@ -43,9 +43,7 @@ export default function App() {
     const [targetClass, setTargetClass] = useState("");
     const [spellControl, setSpellControl] = useState({});
     const [colorMas, setColorMas] = useState(["#27984d", "#ffffff", "#000000", "#ffffff", "#27984d", "#000000", "#000000", "#27984d", "#ffffff", "#ffffff", "#000000", "#000000", "#000000", "#000000"]);
-    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-    let colors;
-    
+    const [like, setLike] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);    
     const updateSpellControll = (mode, targetClasses, levelNames, istokNames, spellNames) => {
         const masObj = { ...spellControl };
         if (mode) {
@@ -112,7 +110,7 @@ export default function App() {
                     if (index % 9 == 8 || index == kolvo) {
                         return (
                             <div className={style.PageCards} key={"group" + index}>
-                                <div key={index - 8} className={style.CardsLine + ' ' + (oborot ? style.Obratka : null)}>
+                                <div key={index - 8} className={style.CardsLine + ' ' + (oborot ? style.Oboratka : null) + ' ' + (oborot ? style.Oborot : null)}>
                                     {
                                         [masCards[0], masCards[1], masCards[2]].map((spell, indexC) => {
                                             if (oborot) return <Card numberOption1={numberOption1} numberOption2={numberOption2} numberOption3={numberOption3} numberOption4={numberOption4} minSize={minSize} maxSize={maxSize} back={true} borderDown={!(index % 9 == 2)} borderRight={indexC/3} spellControl={spell} card={data?.cards?.[spell?.spellName]} key={indexC+spell?.targetClass + '+' + spell?.levelName + '+' + spell?.istokName + '+' + spell?.spellName}> {myOborot()}</Card> 
@@ -959,11 +957,6 @@ export default function App() {
         );
     };
     document.addEventListener('click', () => { setShowSelect(false) });
-    window.addEventListener('scroll', function () {
-        Array.from(document.getElementsByName('scrollMe')).map(elem => {
-            elem.style.marginTop = window.pageYOffset + 'px';
-        })
-    });
     const getMenu = () => {
         return (
             <div name={"scrollMe"} className={style.Menu}>

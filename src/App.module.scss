@@ -12,9 +12,9 @@
     color: var(--color4);
     display: flex;
     background-color: rgb(229, 197, 157);
-    overflow-y: scroll;
     min-height: 100vh;
     .Menu {
+        position: fixed;
         white-space: pre;
         border-right: 3px solid var(--color2);
         margin-right: 30px;
@@ -113,19 +113,10 @@
             }
         }
     }
-    .Oborot{
-        max-width: 180px;
-        padding: 4px;
-        border-radius: 6px;
-        margin-top: 5px;
-        color: var(--color4);
-        background-color: var(--color1);
-        border: 1px solid var(--color4);
-    }
-    .Oborot:hover {
-        cursor: pointer;
-    }
     .Setting {
+        overflow-y: scroll;
+        left: 1301px;
+        position: fixed;
         white-space: nowrap;
         margin-left: 30px;
         height: 100vh;
@@ -241,6 +232,8 @@
         }
     }
     .AllCards {
+        left: 510px;
+        position: fixed;
         min-width: var(--w);
         .PageCards {
             height: var(--h);
@@ -250,22 +243,27 @@
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
-                height: calc(100% / 3 - 0.06%);
-                .Oborot {
-                    width: 100%;
-                    height: 100%;
-                }
+                height: calc(100% / 3);
+            }
+            .Oborot {
+                height: calc(99.79% / 3);
+            }
+            .Obratka {
+                flex-direction: row-reverse;
             }
         }
+        overflow-y: scroll;
+        height: 100vh;
     }
     @media print {
         
         .CardsLine {
             break-inside: avoid;
         }
-    }
-    .Obratka {
-        flex-direction: row-reverse;
+        .AllCards {
+            position: unset;
+            height:max-content;
+        }
     }
     @media print {
         background-color: var(--Backcground);
@@ -329,4 +327,16 @@
 }
 .A {
     margin-bottom: 30px;
+    .Oborot{
+        max-width: 180px;
+        padding: 4px;
+        border-radius: 6px;
+        margin-top: 5px;
+        color: var(--color4);
+        background-color: var(--color1);
+        border: 1px solid var(--color4);
+    }
+    .Oborot:hover {
+        cursor: pointer;
+    }
 }
