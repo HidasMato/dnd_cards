@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from  './Class.module.scss'
 
-export default function Class({setClassText,targetClass, setTargetClass, classNames, setSpellControl }) {
+export default function Class({classesName,setClassText,targetClass, setTargetClass, setSpellControl }) {
     const [show, setShow] = useState(false);
     document.addEventListener('click', () => { setShow(false) });
     return (
@@ -19,7 +19,7 @@ export default function Class({setClassText,targetClass, setTargetClass, classNa
             {
                 show &&
                 <div className={style.Lists}>
-                    {classNames.map(thisClass => {
+                        {classesName.map(thisClass => {
                         return (
                             <div
                                 onClick={() => {

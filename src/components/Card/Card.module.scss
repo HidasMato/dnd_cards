@@ -105,10 +105,10 @@
             padding: 2px;
             border-top:calc(var(--keglPerem) * 1.2) solid var(--BackcgroundCard);
             font-size: 8px;
-            height: calc((var(--h) - 2 * var(--padding))/3 - 2*var(--paddingCard) - 1 * var(--keglTitl) - 1.3*var(--keglTitleNis) - var(--keglFon)*1.2 - 3.2 * (var(--keglOsobText) + var(--keglOsobTitl)) - 2px);
+            height: calc((var(--h) - 2 * var(--padding))/3 - 2*var(--paddingCard) - 1 * var(--keglTitl) - 1.3*var(--keglTitleNis) - var(--keglFon)*1.2 - 3.2 * (var(--keglOsobText) + var(--keglOsobTitl)) - 5px);
             p {
                 white-space: pre-wrap;
-                padding-bottom: 1px;
+                padding-bottom: 2px;
             }
             .Text {
                 width: 100%;

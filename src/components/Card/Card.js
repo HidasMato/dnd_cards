@@ -4,7 +4,24 @@ import {ReactComponent as Druid} from '../../components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from '../../components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from '../../components/BackSvg/Валькирия.svg';
 
-function Card({ numberOption1,numberOption2,numberOption3,numberOption4,classText, minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon, children }) {
+function Card({ dist, comp, long, time, vys, myText, numberOption1,numberOption2,numberOption3,numberOption4,classText, minSize, maxSize,istokPrint, back, spellControl, card, borderRight, borderDown, keglFon, children }) {
+    const fuulPuti = spellControl?.targetClass + '/' + spellControl?.levelName + '/' + spellControl?.istokName + '/' + spellControl?.spellName;
+    const higthLevels = card?.hightlevel != undefined && card?.hightlevel?.length != 0;
+    let descriptionMain, descriptionText, size =maxSize;
+    useEffect(() => {
+        descriptionMain = document.getElementById("Description/" + fuulPuti);
+        descriptionText = descriptionMain?.children;
+        if (descriptionText) {
+            descriptionText[0].style.fontSize = size + 'px';
+            while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 - 2 && Number(size) >= Number(minSize)) {
+                size = size - 0.05;
+                descriptionText[0].style.fontSize = size + 'px';
+            }
+            if (Number(size) <= Number(minSize))
+                console.log(spellControl.spellName, " возможно переполнение");
+            size = maxSize;
+        }
+    }, [myText]);
     if (!spellControl)
         return <div className={style.Empty}></div>;
     if (back) {
@@ -21,25 +38,8 @@ function Card({ numberOption1,numberOption2,numberOption3,numberOption4,classTex
             </div>
         );
     }
-    const fuulPuti = spellControl.targetClass + '/' + spellControl.levelName + '/' + spellControl.istokName + '/' + spellControl.spellName;
-    let descriptionMain, descriptionText, size =maxSize;
-    const higthLevels = card?.hightlevel != undefined && card?.hightlevel.length != 0;
-    setTimeout(() => {
-        descriptionMain = document.getElementById("Description/" + fuulPuti);
-        descriptionText = descriptionMain?.children;
-        if (descriptionText) {
-            descriptionText[0].style.fontSize = size + 'px';
-            while (descriptionText[0].offsetHeight > descriptionMain.offsetHeight - keglFon * 1.2 - 2 && Number(size) >= Number(minSize)) {
-                size = size - 0.05;
-                descriptionText[0].style.fontSize = size + 'px';
-            }
-            if (Number(size) <= Number(minSize))
-                console.log(spellControl.spellName, " возможно переполнение");
-            size = maxSize;
-        }
-    }, 300);
     return (
-        <div className={style.MainCard + " " + (borderRight != 2 ? style.BorderRigth : "") + " " + (borderDown ? style.BorderDown : "")} onLoad= {() => console.log(123)}>
+        <div className={style.MainCard + " " + (borderRight != 2 ? style.BorderRigth : "") + " " + (borderDown ? style.BorderDown : "")}>
             <div className={style.WhiteCard}>
                 <div className={style.Zagolovok}>
                     <div>
@@ -53,18 +53,18 @@ function Card({ numberOption1,numberOption2,numberOption3,numberOption4,classTex
                 </div>
                 <div className={style.Options}>
                     <div>
-                        <p>Время накладывания</p> <span>{card?.makeTime}</span>
+                        <p>{time}</p> <span>{card?.makeTime}</span>
                     </div>
                     <div>
-                        <p>Дистанция</p> <span>{card?.distance}</span>
+                        <p>{dist}</p> <span>{card?.distance}</span>
                     </div>
                 </div>
                 <div className={style.Options}>
                     <div>
-                        <p>Компоненты</p> <span>{card?.components}</span>
+                        <p>{comp}</p> <span>{card?.components}</span>
                     </div>
                     <div>
-                        <p>Длительность
+                        <p>{long}
                             {
                                 card?.concentration == "true" ? "(K)" : null
                         }
@@ -85,7 +85,7 @@ function Card({ numberOption1,numberOption2,numberOption3,numberOption4,classTex
                                 ? 
                                 <div>
                                     <div className={style.HightLevelsTitle}>
-                                        <div>На более высоком уровне</div>
+                                        <div>{vys}</div>
                                     </div>
                                     <div className={style.HightLevels}>
                                         {card?.hightlevel.map((abzac, index) => {
