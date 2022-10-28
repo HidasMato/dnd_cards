@@ -13,14 +13,14 @@
     display: flex;
     background-color: rgb(229, 197, 157);
     min-height: 100vh;
+    overflow: scroll;
     .Menu {
-        position: fixed;
+        overflow-y: scroll;
         white-space: pre;
         border-right: 3px solid var(--color2);
         margin-right: 30px;
         padding: 20px;
         min-width: 480px;   
-        overflow-y: scroll;
         height: 100vh;
         .InputFile {
             max-height: 440px;
@@ -116,7 +116,6 @@
     .Setting {
         overflow-y: scroll;
         left: 1301px;
-        position: fixed;
         white-space: nowrap;
         margin-left: 30px;
         height: 100vh;
@@ -232,8 +231,8 @@
         }
     }
     .AllCards {
+        overflow-y: scroll;
         left: 510px;
-        position: fixed;
         min-width: var(--w);
         .PageCards {
             height: var(--h);
@@ -252,7 +251,6 @@
                 flex-direction: row-reverse;
             }
         }
-        overflow-y: scroll;
         height: 100vh;
     }
     @media print {
