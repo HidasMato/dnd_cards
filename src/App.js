@@ -16,6 +16,8 @@ import { ReactComponent as Paladin } from './components/BackSvg/Паладин.s
 import { ReactComponent as Sledopyt } from './components/BackSvg/Следопыт.svg';
 import { ReactComponent as Charodei } from './components/BackSvg/Чародей.svg';
 import { ReactComponent as Elemental } from './components/BackSvg/Элементаль.svg';
+import { ReactComponent as Varvar } from './components/BackSvg/Варвар.svg';
+import { ReactComponent as Monk } from './components/BackSvg/Монах.svg';
 
 
 export default function App() {
@@ -92,6 +94,10 @@ export default function App() {
                 return <Charodei />;
             case "Элементаль":
                 return <Elemental />;
+            case "Монах":
+                return <Monk />;
+            case "Варвар":
+                return <Varvar />;
             default:
                 break;
             
@@ -981,19 +987,20 @@ export default function App() {
                                     <div className={style.Lists}>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Кастомная"); }}>Кастомная</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Бард"); }}>Бард</div>
+                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Варвар"); }}>Варвар</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Военка"); }}>Военка</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Волшебник"); }}>Волшебник</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Друид"); }}>Друид</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Жрец"); }}>Жрец</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Колдун"); }}>Колдун</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ксанатар"); }}>Ксанатар</div>
+                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Монах"); }}>Монах</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Мистик"); }}>Мистик</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Паладин"); }}>Паладин</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Следопыт"); }}>Следопыт</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Чародей"); }}>Чародей</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Элементаль"); }}>Элементаль</div>
                                         <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия"); }}>Валькирия</div>
-                                        
                                     </div>
                                 }
                             </div>

@@ -29,6 +29,7 @@
             align-items: baseline;
             .Text {
                 width: 227px;
+                min-width: 227px;
             }
             label {
                 margin-left: 10px;
@@ -245,7 +246,7 @@
                 height: calc(100% / 3);
             }
             .Oborot {
-                height: calc(99.79% / 3);
+                height: calc(100% / 3);
             }
             .Obratka {
                 flex-direction: row-reverse;
@@ -264,12 +265,14 @@
         }
     }
     @media print {
-        background-color: var(--Backcground);
         .Menu {
             display: none;
         }
         .AllCards {
             margin: 0px;
+            -webkit-print-color-adjust:exact !important;
+            print-color-adjust:exact !important;
+            background-color: var(--Backcground);
         }
         .CardsLine {
             break-inside: avoid;
@@ -296,7 +299,7 @@
     --padding: 0mm;
     --small: 54mm;
     --big: 63mm;
-    --h: 296.8mm;
+    --h: 296mm;
     --w: 210mm;
     --keglTitl: 16px;
     --keglFon: 9px;
