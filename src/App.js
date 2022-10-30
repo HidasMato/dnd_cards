@@ -1026,32 +1026,35 @@ export default function App() {
                                     <div className={style.Tre} />
                                 </div>
                                 {showSelect &&
-                                    <div className={style.Lists}>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Кастомная") }}>Кастомная</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Бард") }}>Бард</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Варвар") }}>Варвар</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Военка") }}>Военка</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Волшебник") }}>Волшебник</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Друид") }}>Друид</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Жрец") }}>Жрец</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Колдун") }}>Колдун</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ксанатар") }}>Ксанатар</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Монах") }}>Монах</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Мистик") }}>Мистик</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Паладин") }}>Паладин</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Следопыт") }}>Следопыт</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Чародей") }}>Чародей</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Элементаль") }}>Элементаль</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия") }}>Валькирия</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Воплощение") }}>Воплощение</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Вызов") }}>Вызов</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Иллюзия") }}>Иллюзия</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Некромантия") }}>Некромантия</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ограждение") }}>Ограждение</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Очарование") }}>Очарование</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Преобразование") }}>Преобразование</div>
-                                        <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Прорицание") }}>Прорицание</div>
-                                    </div>
+                                    <>
+                                        <div className={style.Lists}>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Кастомная") }}>Кастомная</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Бард") }}>Бард</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Варвар") }}>Варвар</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Военка") }}>Военка</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Волшебник") }}>Волшебник</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Друид") }}>Друид</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Жрец") }}>Жрец</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Колдун") }}>Колдун</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ксанатар") }}>Ксанатар</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Монах") }}>Монах</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Мистик") }}>Мистик</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Паладин") }}>Паладин</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Следопыт") }}>Следопыт</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Чародей") }}>Чародей</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Элементаль") }}>Элементаль</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия") }}>Валькирия</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Воплощение") }}>Воплощение</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Вызов") }}>Вызов</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Иллюзия") }}>Иллюзия</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Некромантия") }}>Некромантия</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Ограждение") }}>Ограждение</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Очарование") }}>Очарование</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Преобразование") }}>Преобразование</div>
+                                            <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Прорицание") }}>Прорицание</div>
+                                        </div>
+                                    <p className={style.P}>Подсвеченные темным "тяжелые" и могут сломать Ваш браузер :3<br/>Не пытайтесь устанавливать их, если у Вас выбрано много карточек</p>
+                                    </>
                                 }
                             </div>
                         </div>

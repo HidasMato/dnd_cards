@@ -65,6 +65,20 @@
                     cursor: pointer;
                     background-color: var(--color3);
                 }
+                .List2 {
+                    padding: 10px;
+                }
+                .List2:hover {
+                    cursor: pointer;
+                    background-color: var(--color5);
+                }
+            }
+            .P {
+                position: absolute;
+                top: 50px;
+                z-index: 3;
+                background-color: var(--color5);
+                padding: 10px;
             }
             .Text {
                 width: 226px;
