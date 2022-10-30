@@ -4,6 +4,7 @@ import Card from './components/Card/Card';
 import Class from './components/Class/Class';
 import Istok from './components/Istok/Istok';
 import VK from './VK.svg';
+import YD from './YD.svg';
 import {ReactComponent as Druid} from './components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from './components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from './components/BackSvg/Валькирия.svg';
@@ -1005,7 +1006,10 @@ export default function App() {
             <div name={"scrollMe"} className={style.Menu}>
                 <div className={style.Flex}>
                     <Class classesName={data?.classes ? Object.keys(data?.classes) : []} targetClass={targetClass} setClassText={setClassText} setTargetClass={setTargetClass} setSpellControl={setSpellControl}></Class>
-                    <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="vk.com/dnd_card" /></a>
+                    <div>
+                        <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="disk.yandex.ru/d/bFuGOO1XBxZU9w" /></a>
+                        <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="vk.com/dnd_card" /></a>
+                    </div>
                 </div>
                 {data?.classes[targetClass] &&
                     <div className={style.A}>
