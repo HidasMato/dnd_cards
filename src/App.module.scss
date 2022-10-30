@@ -99,6 +99,14 @@
         .Flex {
             display: flex;
             margin-top: 6px;
+            justify-content: space-between;
+            img {
+                height: 40px;
+                width: 40px;
+            }
+            img:hover {
+                cursor:pointer;
+            }
             .Text {
                 width: 240px;
                 margin-top: 5px;
@@ -296,7 +304,7 @@
     --Text5Card: rgb(0, 0, 0);
     --Oblogka1: rgb(39 152 77);
     --Oblogka2: rgb(255, 255, 255);
-    --padding: 0mm;
+    --padding: 2mm;
     --small: 54mm;
     --big: 63mm;
     --h: 296mm;
