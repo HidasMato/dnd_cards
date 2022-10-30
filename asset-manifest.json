@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dnd_cards/static/css/main.deee80bb.css",
-    "main.js": "/dnd_cards/static/js/main.f26a10c7.js",
+    "main.css": "/dnd_cards/static/css/main.bff3d6e2.css",
+    "main.js": "/dnd_cards/static/js/main.d8a8d3d2.js",
     "static/media/Преобразование.svg": "/dnd_cards/static/media/Преобразование.0d738af9795d8b0e6546767ab80606fa.svg",
     "static/media/Ограждение.svg": "/dnd_cards/static/media/Ограждение.6c0650ab7684c70e32741c996185bb4d.svg",
     "static/media/Очарование.svg": "/dnd_cards/static/media/Очарование.3e64fd45a09514114a3011c4dac5241f.svg",
@@ -25,13 +25,14 @@
     "static/media/Элементаль.svg": "/dnd_cards/static/media/Элементаль.832547cab00bd4baf08e106e982d02ed.svg",
     "static/media/Военка.svg": "/dnd_cards/static/media/Военка.df5f9f9f965f136c0691154ddb7de3ae.svg",
     "static/media/Друид.svg": "/dnd_cards/static/media/Друид.29228150906b4697af7bc5f5160278bb.svg",
+    "static/media/YD.svg": "/dnd_cards/static/media/YD.364852cedc714254d36021411e3a7e02.svg",
     "index.html": "/dnd_cards/index.html",
     "static/media/VK.svg": "/dnd_cards/static/media/VK.f630d5ff8dda6f766ef2c5491095f9d0.svg",
-    "main.deee80bb.css.map": "/dnd_cards/static/css/main.deee80bb.css.map",
-    "main.f26a10c7.js.map": "/dnd_cards/static/js/main.f26a10c7.js.map"
+    "main.bff3d6e2.css.map": "/dnd_cards/static/css/main.bff3d6e2.css.map",
+    "main.d8a8d3d2.js.map": "/dnd_cards/static/js/main.d8a8d3d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.deee80bb.css",
-    "static/js/main.f26a10c7.js"
+    "static/css/main.bff3d6e2.css",
+    "static/js/main.d8a8d3d2.js"
   ]
 }
