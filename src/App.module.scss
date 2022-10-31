@@ -117,7 +117,6 @@
             img {
                 margin-left: 5px;
                 height: 40px;
-                width: 40px;
             }
             img:hover {
                 cursor:pointer;
@@ -147,11 +146,11 @@
         min-width: 550px;
         border-left: 3px solid var(--color2);
         .MyButton {
-            margin-top: 10px;
+            margin-bottom: 10px;
             background-color: var(--color1);
             border: 3px solid var(--color3);
             padding: 4px;
-            width: 200px;
+            width: fit-content;
             border-radius: 6px;
         }
         .MyButton:hover {
@@ -159,6 +158,7 @@
         }
         .NumberSetting {
             margin-top: 10px;
+            margin-bottom: 10px;
             display: flex;
             .Numbers {
                 display: flex;
@@ -364,4 +364,28 @@
     .Oborot:hover {
         cursor: pointer;
     }
+}
+.Montserrat {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.Gabriela {
+    font-family: 'Gabriela', serif;
+}
+
+.Raleway {
+    font-family: 'Raleway', sans-serif;
+}
+
+.YesevaOne {
+    font-family: 'Yeseva One', cursive;
+}
+
+.Vollkorn {
+    font-family: 'Vollkorn', serif;
+}
+
+.ComicSans {
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }

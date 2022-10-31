@@ -3,8 +3,8 @@ import style from './App.module.scss';
 import Card from './components/Card/Card';
 import Class from './components/Class/Class';
 import Istok from './components/Istok/Istok';
-import VK from './VK.svg';
-import YD from './YD.svg';
+import VK from './components/VK.png';
+import YD from './components/YD.png';
 import {ReactComponent as Druid} from './components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from './components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from './components/BackSvg/Валькирия.svg';
@@ -36,6 +36,8 @@ export default function App() {
     const [numberOption3, setNumberOption3] = useState(false);
     const [numberOption4, setNumberOption4] = useState(false);
     const [pyt, setPyt] = useState(undefined);
+    const [fontNumber, setFontNumber] = useState(0);
+    const font = ["ComicSans","YesevaOne","Vollkorn","Montserrat","Gabriela","Raleway"];
     const [myText, setMyText] = useState(0);
     const [classText, setClassText] = useState(undefined);
     const [time, setTime] = useState("Время накладывания");
@@ -134,7 +136,7 @@ export default function App() {
         const kolvo = Object.keys(spellControl).length - 1;
         let masCards = [];
         return (
-            <div className={style.AllCards}>
+            <div className={style.AllCards + ' ' + style[font[fontNumber]]}>
                 {Object.keys(spellControl).map((spellName, index) => {
                     if (index % 9 == 0)
                         masCards = [];
@@ -997,6 +999,8 @@ export default function App() {
                     </div>
                 </div>
                 <div className={style.MyButton} onClick={() => { console.clear(); setMyText(myText + 1)}}>Я подстраиваю текст</div>
+                <div className={style.MyButton} onClick={() => { setFontNumber((fontNumber + 1) % font.length) }}>Другой шрифт</div>
+                {font[fontNumber]}
             </div>
         );
     };
@@ -1152,7 +1156,7 @@ export default function App() {
                     };
                 }, 100);
             }, [])
-        }
+            }
             {getMenu()}
             {getCards()}
             {getSetting()}
