@@ -5,6 +5,7 @@ import Class from './components/Class/Class';
 import Istok from './components/Istok/Istok';
 import VK from './components/VK.png';
 import YD from './components/YD.png';
+import GH from './components/GH.png';
 import {ReactComponent as Druid} from './components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from './components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from './components/BackSvg/Валькирия.svg';
@@ -1013,6 +1014,7 @@ export default function App() {
                     <div>
                         <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="YD" /></a>
                         <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="VK" /></a>
+                        <a  target="_blank" href="https://github.com/HidasMato/dnd_cards"><img src={GH} alt="GH" /></a>
                     </div>
                 </div>
                 {data?.classes[targetClass] &&
