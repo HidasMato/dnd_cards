@@ -3,6 +3,8 @@ import style from './App.module.scss';
 import Card from './components/Card/Card';
 import Class from './components/Class/Class';
 import Istok from './components/Istok/Istok';
+import VK from './components/VK.png';
+import YD from './components/YD.png';
 import {ReactComponent as Druid} from './components/BackSvg/Друид.svg';
 import {ReactComponent as Bard} from './components/BackSvg/Бард.svg';
 import { ReactComponent as Valkiria } from './components/BackSvg/Валькирия.svg';
@@ -1009,8 +1011,8 @@ export default function App() {
                 <div className={style.Flex}>
                     <Class classesName={data?.classes ? Object.keys(data?.classes) : []} targetClass={targetClass} setClassText={setClassText} setTargetClass={setTargetClass} setSpellControl={setSpellControl}></Class>
                     <div>
-                        <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src="./components/YD.png" alt="YD" /></a>
-                        <a  target="_blank" href="https://vk.com/dnd_card"><img src="./components/VK.png" alt="VK" /></a>
+                        <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="YD" /></a>
+                        <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="VK" /></a>
                     </div>
                 </div>
                 {data?.classes[targetClass] &&
