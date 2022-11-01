@@ -1011,8 +1011,8 @@ export default function App() {
                 <div className={style.Flex}>
                     <Class classesName={data?.classes ? Object.keys(data?.classes) : []} targetClass={targetClass} setClassText={setClassText} setTargetClass={setTargetClass} setSpellControl={setSpellControl}></Class>
                     <div>
-                        <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="disk.yandex.ru/d/bFuGOO1XBxZU9w" /></a>
-                        <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="vk.com/dnd_card" /></a>
+                        <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="YD" /></a>
+                        <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="VK" /></a>
                     </div>
                 </div>
                 {data?.classes[targetClass] &&
