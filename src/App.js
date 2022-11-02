@@ -29,6 +29,7 @@ import { ReactComponent as Ocharovanie } from './components/BackSvg/Очаров
 import { ReactComponent as Preobrazovanie } from './components/BackSvg/Преобразование.svg';
 import { ReactComponent as Illusia } from './components/BackSvg/Иллюзия.svg';
 import { ReactComponent as Necromantia } from './components/BackSvg/Некромантия.svg';
+import { ReactComponent as Vedmochka } from './components/BackSvg/Ведьмочка.svg';
 
 
 export default function App() {
@@ -127,6 +128,8 @@ export default function App() {
                 return <Illusia />;
             case "Некромантия":
                 return <Necromantia />;
+            case "Ведьмочка":
+                return <Vedmochka/>
             default:
                 break;
             
@@ -1017,6 +1020,9 @@ export default function App() {
                         <a  target="_blank" href="https://github.com/HidasMato/dnd_cards"><img src={GH} alt="GH" /></a>
                     </div>
                 </div>
+                
+                {showSelect && <p className={style.P}>Подсвеченные темным "тяжелые" и могут сломать Ваш браузер :3<br/>Не пытайтесь устанавливать их, если у Вас выбрано много карточек</p>}
+                                
                 {data?.classes[targetClass] &&
                     <div className={style.A}>
                         <div className={style.Oborot} onClick={() => {
@@ -1032,7 +1038,6 @@ export default function App() {
                                     <div className={style.Tre} />
                                 </div>
                                 {showSelect &&
-                                    <>
                                         <div className={style.Lists}>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Кастомная") }}>Кастомная</div>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Бард") }}>Бард</div>
@@ -1049,7 +1054,6 @@ export default function App() {
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Следопыт") }}>Следопыт</div>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Чародей") }}>Чародей</div>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Элементаль") }}>Элементаль</div>
-                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия") }}>Валькирия</div>
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Воплощение") }}>Воплощение</div>
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Вызов") }}>Вызов</div>
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Иллюзия") }}>Иллюзия</div>
@@ -1058,9 +1062,9 @@ export default function App() {
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Очарование") }}>Очарование</div>
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Преобразование") }}>Преобразование</div>
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Прорицание") }}>Прорицание</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия") }}>Валькирия</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ведьмочка") }}>Ведьмочка</div>
                                         </div>
-                                    <p className={style.P}>Подсвеченные темным "тяжелые" и могут сломать Ваш браузер :3<br/>Не пытайтесь устанавливать их, если у Вас выбрано много карточек</p>
-                                    </>
                                 }
                             </div>
                         </div>
