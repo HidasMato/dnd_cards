@@ -30,6 +30,7 @@ import { ReactComponent as Preobrazovanie } from './components/BackSvg/Прео�
 import { ReactComponent as Illusia } from './components/BackSvg/Иллюзия.svg';
 import { ReactComponent as Necromantia } from './components/BackSvg/Некромантия.svg';
 import { ReactComponent as Vedmochka } from './components/BackSvg/Ведьмочка.svg';
+import { ReactComponent as Volk } from './components/BackSvg/Волк.svg';
 
 
 export default function App() {
@@ -130,6 +131,8 @@ export default function App() {
                 return <Necromantia />;
             case "Ведьмочка":
                 return <Vedmochka/>
+            case "Волк":
+                return <Volk/>
             default:
                 break;
             
@@ -1021,7 +1024,7 @@ export default function App() {
                     </div>
                 </div>
                 
-                {showSelect && <p className={style.P}>Подсвеченные темным "тяжелые" и могут сломать Ваш браузер :3<br/>Не пытайтесь устанавливать их, если у Вас выбрано много карточек</p>}
+                {showSelect && <p className={style.P}>Картинки в списке едят много памяти. Если на странице их больше 200-300, Ваш браузер может упасть<br/>Если Вам нужно напечатать много карточек, разделите это на несколько раз по 100-200 штук</p>}
                                 
                 {data?.classes[targetClass] &&
                     <div className={style.A}>
@@ -1064,6 +1067,7 @@ export default function App() {
                                             <div className={style.List2} onClick={() => { setShowSelect(false); setSelect("Прорицание") }}>Прорицание</div>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Валькирия") }}>Валькирия</div>
                                             <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Ведьмочка") }}>Ведьмочка</div>
+                                            <div className={style.List} onClick={() => { setShowSelect(false); setSelect("Волк") }}>Волк</div>
                                         </div>
                                 }
                             </div>
