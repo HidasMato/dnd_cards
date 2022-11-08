@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dnd_cards/static/css/main.7a8b5f70.css",
-    "main.js": "/dnd_cards/static/js/main.4f421528.js",
+    "main.css": "/dnd_cards/static/css/main.5adc9c70.css",
+    "main.js": "/dnd_cards/static/js/main.9c269ad7.js",
     "static/media/Волк.svg": "/dnd_cards/static/media/Волк.d180de04080fe4f177ecdf14385609c8.svg",
     "static/media/Преобразование.svg": "/dnd_cards/static/media/Преобразование.0d738af9795d8b0e6546767ab80606fa.svg",
     "static/media/Ограждение.svg": "/dnd_cards/static/media/Ограждение.d66e5b71eee286209fb9f8e600353a12.svg",
@@ -11,8 +11,10 @@
     "static/media/Ведьмочка.svg": "/dnd_cards/static/media/Ведьмочка.cc978a136a61b13d15a0dc11868a51cc.svg",
     "static/media/Варвар.svg": "/dnd_cards/static/media/Варвар.8e6c2f7c11aed05ec2a7163deb070147.svg",
     "static/media/Валькирия.svg": "/dnd_cards/static/media/Валькирия.0c3a99302f9d2dd186e01aaaaddcc54e.svg",
+    "static/media/Совушка.svg": "/dnd_cards/static/media/Совушка.62d252be3562011a75d4b0431426fd3e.svg",
     "static/media/Иллюзия.svg": "/dnd_cards/static/media/Иллюзия.befbb28ea877df6b30a523a0e9612870.svg",
     "static/media/Мужик с барабанами.svg": "/dnd_cards/static/media/Мужик с барабанами.18030b307708247e91e4a63ffa3dd0e4.svg",
+    "static/media/Дракон.svg": "/dnd_cards/static/media/Дракон.d9149e86fe3d5f13c15f21861d948e72.svg",
     "static/media/Вызов.svg": "/dnd_cards/static/media/Вызов.2fdd344b4baed353c371532243585f1a.svg",
     "static/media/Воплощение.svg": "/dnd_cards/static/media/Воплощение.6188e0ff51f7920b06b263c2084cebf8.svg",
     "static/media/Жрец.svg": "/dnd_cards/static/media/Жрец.3174bba39b57aa1417cdbb78b4b6845b.svg",
@@ -26,6 +28,7 @@
     "static/media/Монах.svg": "/dnd_cards/static/media/Монах.05e0b9ed16c23875e2196513466fab57.svg",
     "static/media/Жук.svg": "/dnd_cards/static/media/Жук.1fb5d55957ece08f8ab53e5b7fa5eb34.svg",
     "static/media/Огенный меч.svg": "/dnd_cards/static/media/Огенный меч.ff115079fa0d8058c9b60ca8237a823e.svg",
+    "static/media/Сигила мелек таус.svg": "/dnd_cards/static/media/Сигила мелек таус.30bcdb056cc36ee902f5a0f73e056496.svg",
     "static/media/Жук2.svg": "/dnd_cards/static/media/Жук2.5d719efec7db1e934ef956cdae4f3fad.svg",
     "static/media/Паладин.svg": "/dnd_cards/static/media/Паладин.1b8b6c7d395d06d593279357d990f3f0.svg",
     "static/media/ЖукОса.svg": "/dnd_cards/static/media/ЖукОса.13a91c1e20a45dd322d54992af644aa5.svg",
@@ -33,6 +36,7 @@
     "static/media/Напиток Пенный.svg": "/dnd_cards/static/media/Напиток Пенный.a9f689b9955c10518cec8f833d7dc13f.svg",
     "static/media/Следопыт.svg": "/dnd_cards/static/media/Следопыт.19bf011506306c4a1671fa1a88ae2ace.svg",
     "static/media/Африканска леди в танце.svg": "/dnd_cards/static/media/Африканска леди в танце.b4a130d98aa80f5e07f43a91b99a9ce1.svg",
+    "static/media/Африканский мужик в танце.svg": "/dnd_cards/static/media/Африканский мужик в танце.4ae2af5869569938c9e311ad0f211932.svg",
     "static/media/Шестерня 1.svg": "/dnd_cards/static/media/Шестерня 1.6746cf328a01ff0c768e7f09af17f47d.svg",
     "static/media/Бард.svg": "/dnd_cards/static/media/Бард.ac39859cb1fddc9bd1993231c526421b.svg",
     "static/media/Напиток Шипящий.svg": "/dnd_cards/static/media/Напиток Шипящий.892ff2489d2ecb720611854e3c21dd8d.svg",
@@ -44,11 +48,11 @@
     "static/media/YD.png": "/dnd_cards/static/media/YD.18054433fa3262b13e64.png",
     "static/media/VK.png": "/dnd_cards/static/media/VK.e2217eec82df5df027e9.png",
     "index.html": "/dnd_cards/index.html",
-    "main.7a8b5f70.css.map": "/dnd_cards/static/css/main.7a8b5f70.css.map",
-    "main.4f421528.js.map": "/dnd_cards/static/js/main.4f421528.js.map"
+    "main.5adc9c70.css.map": "/dnd_cards/static/css/main.5adc9c70.css.map",
+    "main.9c269ad7.js.map": "/dnd_cards/static/js/main.9c269ad7.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a8b5f70.css",
-    "static/js/main.4f421528.js"
+    "static/css/main.5adc9c70.css",
+    "static/js/main.9c269ad7.js"
   ]
 }
