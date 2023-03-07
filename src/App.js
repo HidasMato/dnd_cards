@@ -1069,6 +1069,7 @@ export default function App() {
     const getMenu = () => {
         return (
             <div name={"scrollMe"} className={style.Menu}>
+            <a className={style.NewCards} target="_blank" href="https://hidasmato.github.io/role_cards_spells/"><div>{"https://hidasmato.github.io/role_cards_spells/\nТут есть новая версия карточек.\nБолее наглядная и с удобным CSV редактором"}</div></a>
                 <div className={style.Flex}>
                     <div className={style.MyClass} onClick={(e) => e.stopPropagation()}>
                         <div className={style.Obod} onClick={() => {
