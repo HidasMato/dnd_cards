@@ -1106,7 +1106,7 @@ export default function App() {
                     </div>
                     <div>
                         <a  target="_blank" href="https://disk.yandex.ru/d/bFuGOO1XBxZU9w"><img src={YD} alt="YD" /></a>
-                        <a  target="_blank" href="https://vk.com/dnd_card"><img src={VK} alt="VK" /></a>
+                        <a  target="_blank" href="https://vk.com/role_cards"><img src={VK} alt="VK" /></a>
                         <a  target="_blank" href="https://github.com/HidasMato/dnd_cards"><img src={GH} alt="GH" /></a>
                     </div>
                 </div>
